@@ -1,0 +1,22 @@
+﻿@model ProjectSevenDayNight.Models.DataModels.TblProduct
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class=" container">
+    <br />
+    <div class=" alert alert-primary"><h2>Yeni Ürün Ekleme</h2></div>
+    <form method="post">
+        <label>Ürün Adı</label>
+        <input type="text" name="ProductName" class="form-control" />
+        <br />
+        <label>Ürün Stok Sayısı</label>
+        @Html.TextBoxFor(model => model.ProductStock, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Ürünü Ekle</button>
+    
+    </form>
+
+</div>
+
