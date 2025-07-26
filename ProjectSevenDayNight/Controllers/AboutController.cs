@@ -41,12 +41,24 @@ namespace ProjectSevenDayNight.Controllers
         public ActionResult UpdateAbout(int id)
         {
             var about = db.About.Find(id);
+            if (about == null)
+                return HttpNotFound();  // veya kendi hata sayfan
+
             return View(about);
         }
+
         [HttpPost]
         public ActionResult UpdateAbout(About about)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(about); // Hata varsa tekrar formu göster
+            }
+
             var value = db.About.Find(about.AboutId);
+            if (value == null)
+                return HttpNotFound();
+
             value.Title = about.Title;
             value.Subtitle = about.Subtitle;
             value.Description = about.Description;
@@ -57,10 +69,8 @@ namespace ProjectSevenDayNight.Controllers
 
             db.SaveChanges();
             return RedirectToAction("AboutList");
-
-
-
         }
+
 
     }
 }

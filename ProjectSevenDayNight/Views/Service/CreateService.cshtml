@@ -1,0 +1,47 @@
+@model ProjectSevenDayNight.Models.DataModels.Service
+@{
+    ViewBag.Title = "CreateService";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br>
+<br>
+<br>
+
+<h3>Add Service</h3>
+
+<form asp-action="CreateService" method="post">
+    <div class="mb-3">
+        <label for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Subtitle" class="form-label">Subtitle</label>
+        <input asp-for="Subtitle" class="form-control" />
+        <span asp-validation-for="Subtitle" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="CardTitle" class="form-label">Card Title</label>
+        <input asp-for="CardTitle" class="form-control" />
+        <span asp-validation-for="CardTitle" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="CardDescription" class="form-label">Card Description</label>
+        <textarea asp-for="CardDescription" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="CardDescription" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="CardImageUrl" class="form-label">Card Image URL</label>
+        <input asp-for="CardImageUrl" class="form-control" />
+        <span asp-validation-for="CardImageUrl" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/Service/ServiceList" class="btn btn-secondary ms-2">Ingore</a>
+</form>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+} 

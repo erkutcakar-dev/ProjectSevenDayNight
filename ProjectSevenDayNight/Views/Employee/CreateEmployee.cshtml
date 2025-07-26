@@ -1,0 +1,47 @@
+@model ProjectSevenDayNight.Models.DataModels.Employee
+@{
+    ViewBag.Title = "CreateEmployee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br>
+<br>
+<br>
+
+<h3>Add Employee</h3>
+
+<form asp-action="CreateEmployee" method="post">
+    <div class="mb-3">
+        <label for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Subtitle" class="form-label">Subtitle</label>
+        <input asp-for="Subtitle" class="form-control" />
+        <span asp-validation-for="Subtitle" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="ImageUrl" class="form-label">Image URL</label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="NameSurname" class="form-label">Name Surname</label>
+        <input asp-for="NameSurname" class="form-control" />
+        <span asp-validation-for="NameSurname" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Job" class="form-label">Job</label>
+        <input asp-for="Job" class="form-control" />
+        <span asp-validation-for="Job" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/Employee/EmployeeList" class="btn btn-secondary ms-2">Ingore</a>
+</form>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+} 

@@ -1,6 +1,6 @@
-﻿@model List<ProjectSevenDayNight.Models.DataModels.About>
+@model List<ProjectSevenDayNight.Models.DataModels.Faq>
 @{
-    ViewBag.Title = "About List";
+    ViewBag.Title = "FAQ List";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -13,9 +13,9 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex align-items-center">
-                <h4 class="card-title">Hakkımda Listesi</h4>
-                <a href="/About/CreateAbout" class="btn btn-primary btn-round ms-auto">
-                    <i class="fa fa-plus"></i> Hakkımda Ekle
+                <h4 class="card-title">SSS Listesi</h4>
+                <a href="/Faq/CreateFaq" class="btn btn-primary btn-round ms-auto">
+                    <i class="fa fa-plus"></i> SSS Ekle
                 </a>
             </div>
         </div>
@@ -26,13 +26,10 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Subtitle</th>
                             <th>Title</th>
-                            <th>Description</th>
-                            <th>BulletPoint1</th>
-                            <th>BulletPoint2</th>
-                            <th>BulletPoint3</th>
-                            <th>ButtonText</th>
+                            <th>Subtitle</th>
+                            <th>Question</th>
+                            <th>Answer</th>
                             <th style="width: 10%">Action</th>
                         </tr>
                     </thead>
@@ -40,23 +37,20 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.AboutId</td>
-                                <td>@item.Subtitle</td>
+                                <td>@item.FaqId</td>
                                 <td>@item.Title</td>
-                                <td>@item.Description</td>
-                                <td>@item.BulletPoint1</td>
-                                <td>@item.BulletPoint2</td>
-                                <td>@item.BulletPoint3</td>
-                                <td>@item.ButtonText</td>
+                                <td>@item.Subtitle</td>
+                                <td>@item.Question</td>
+                                <td>@item.Answer</td>
                                 <td>
                                     <div class="form-button-action d-flex gap-2">
-                                        <a href="/About/UpdateAbout/@item.AboutId"
+                                        <a href="/Faq/UpdateFaq/@item.FaqId"
                                            class="btn btn-primary d-flex align-items-center gap-1"
                                            data-bs-toggle="tooltip"
                                            title="Edit">
                                             <i class="fa fa-edit"></i> <span>Update</span>
                                         </a>
-                                        <a href="/About/DeleteAbout/@item.AboutId"
+                                        <a href="/Faq/DeleteFaq/@item.FaqId"
                                            class="btn btn-danger d-flex align-items-center gap-1"
                                            data-bs-toggle="tooltip"
                                            title="Delete"
@@ -74,4 +68,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> 

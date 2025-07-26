@@ -860,11 +860,11 @@
     <Content Include="Views\Default\_CompanyStats.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\About\AboutList.cshtml" />
+    <Content Include="Views\About\CreateAbout.cshtml" />
+    <Content Include="Views\About\UpdateAbout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Context\" />
-    <Folder Include="Entities\" />
     <Folder Include="Views\Carousel\" />
   </ItemGroup>
   <ItemGroup>

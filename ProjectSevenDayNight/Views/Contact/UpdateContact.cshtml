@@ -1,0 +1,69 @@
+@model ProjectSevenDayNight.Models.DataModels.Contact
+
+@{
+    ViewBag.Title = "Update Contact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm("UpdateContact", "Contact", FormMethod.Post, new { @class = "mt-4" }))
+{
+    @Html.HiddenFor(m => m.ContactId)
+
+    <div class="mb-3">
+        <label class="form-label">Başlık</label>
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Alt Başlık</label>
+        @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Subtitle, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Açıklama</label>
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "5" })
+        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Sosyal Medya</label>
+        @Html.TextBoxFor(m => m.SocialMedia, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SocialMedia, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Sosyal Medya Resim URL</label>
+        @Html.TextBoxFor(m => m.SocialMediaImageUrl, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SocialMediaImageUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Adres</label>
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">E-posta</label>
+        @Html.TextBoxFor(m => m.Mail, new { @class = "form-control", type = "email" })
+        @Html.ValidationMessageFor(m => m.Mail, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Telefon</label>
+        @Html.TextBoxFor(m => m.Telephone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Telephone, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a href="/Contact/ContactList" class="btn btn-secondary ms-2">İptal</a>
+}
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+} 

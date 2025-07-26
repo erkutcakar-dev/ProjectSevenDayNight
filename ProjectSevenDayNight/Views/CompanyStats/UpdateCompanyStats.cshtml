@@ -1,0 +1,45 @@
+@model ProjectSevenDayNight.Models.DataModels.CompanyStats
+
+@{
+    ViewBag.Title = "Update Company Stats";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm("UpdateCompanyStats", "CompanyStats", FormMethod.Post, new { @class = "mt-4" }))
+{
+    @Html.HiddenFor(m => m.StatId)
+
+    <div class="mb-3">
+        <label class="form-label">Başlık</label>
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Değer</label>
+        @Html.TextBoxFor(m => m.Value, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(m => m.Value, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Birim</label>
+        @Html.TextBoxFor(m => m.Unit, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Unit, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Görüntüleme Sırası</label>
+        @Html.TextBoxFor(m => m.DisplayOrder, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(m => m.DisplayOrder, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a href="/CompanyStats/CompanyStatsList" class="btn btn-secondary ms-2">İptal</a>
+}
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+} 

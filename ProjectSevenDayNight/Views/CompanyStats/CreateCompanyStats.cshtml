@@ -1,0 +1,42 @@
+@model ProjectSevenDayNight.Models.DataModels.CompanyStats
+@{
+    ViewBag.Title = "CreateCompanyStats";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br>
+<br>
+<br>
+
+<h3>Add Company Stats</h3>
+
+<form asp-action="CreateCompanyStats" method="post">
+    <div class="mb-3">
+        <label for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Value" class="form-label">Value</label>
+        <input asp-for="Value" class="form-control" type="number" />
+        <span asp-validation-for="Value" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Unit" class="form-label">Unit</label>
+        <input asp-for="Unit" class="form-control" />
+        <span asp-validation-for="Unit" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="DisplayOrder" class="form-label">Display Order</label>
+        <input asp-for="DisplayOrder" class="form-control" type="number" />
+        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/CompanyStats/CompanyStatsList" class="btn btn-secondary ms-2">Ingore</a>
+</form>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+} 

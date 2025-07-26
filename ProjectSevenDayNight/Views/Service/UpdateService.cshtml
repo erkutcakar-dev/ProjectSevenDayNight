@@ -1,0 +1,51 @@
+@model ProjectSevenDayNight.Models.DataModels.Service
+
+@{
+    ViewBag.Title = "Update Service";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm("UpdateService", "Service", FormMethod.Post, new { @class = "mt-4" }))
+{
+    @Html.HiddenFor(m => m.ServiceId)
+
+    <div class="mb-3">
+        <label class="form-label">Başlık</label>
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Alt Başlık</label>
+        @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Subtitle, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Kart Başlığı</label>
+        @Html.TextBoxFor(m => m.CardTitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CardTitle, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Kart Açıklaması</label>
+        @Html.TextAreaFor(m => m.CardDescription, new { @class = "form-control", rows = "5" })
+        @Html.ValidationMessageFor(m => m.CardDescription, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Kart Resim URL</label>
+        @Html.TextBoxFor(m => m.CardImageUrl, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CardImageUrl, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a href="/Service/ServiceList" class="btn btn-secondary ms-2">İptal</a>
+}
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+} 

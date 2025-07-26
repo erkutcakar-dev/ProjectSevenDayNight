@@ -1,0 +1,39 @@
+@model ProjectSevenDayNight.Models.DataModels.Crausel
+
+@{
+    ViewBag.Title = "Update Crausel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm("UpdateCrausel", "Crausel", FormMethod.Post, new { @class = "mt-4" }))
+{
+    @Html.HiddenFor(m => m.CrauselId)
+
+    <div class="mb-3">
+        <label class="form-label">Başlık</label>
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Alt Başlık</label>
+        @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Subtitle, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Açıklama</label>
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "5" })
+        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a href="/Crausel/CrauselList" class="btn btn-secondary ms-2">İptal</a>
+}
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+} 

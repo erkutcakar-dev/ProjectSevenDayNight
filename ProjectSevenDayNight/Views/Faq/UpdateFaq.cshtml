@@ -1,0 +1,45 @@
+@model ProjectSevenDayNight.Models.DataModels.Faq
+
+@{
+    ViewBag.Title = "Update FAQ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm("UpdateFaq", "Faq", FormMethod.Post, new { @class = "mt-4" }))
+{
+    @Html.HiddenFor(m => m.FaqId)
+
+    <div class="mb-3">
+        <label class="form-label">Başlık</label>
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Alt Başlık</label>
+        @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Subtitle, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Soru</label>
+        @Html.TextAreaFor(m => m.Question, new { @class = "form-control", rows = "5" })
+        @Html.ValidationMessageFor(m => m.Question, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Cevap</label>
+        @Html.TextAreaFor(m => m.Answer, new { @class = "form-control", rows = "5" })
+        @Html.ValidationMessageFor(m => m.Answer, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a href="/Faq/FaqList" class="btn btn-secondary ms-2">İptal</a>
+}
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+} 
