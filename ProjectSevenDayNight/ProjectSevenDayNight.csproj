@@ -141,9 +141,16 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CarouselController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CompanyStatsController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CrauselController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\FaqController.cs" />
+    <Compile Include="Controllers\FeatureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,6 +203,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ServicesViewModel.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -691,6 +699,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="obj\Debug\ProjectSevenDayNight.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\ProjectSevenDayNight.dll" />
+    <Content Include="obj\Debug\ProjectSevenDayNight.pdb" />
+    <Content Include="obj\Debug\TempPE\Models.DataModels.Model1.Context.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.DataModels.Model1.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Models.DataModels.Model1.Designer.cs.dll" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -813,6 +827,14 @@
     <Content Include="Content\kaiadmin-lite-1.2.0\assets\fonts\summernote\summernote.woff2" />
     <Content Include="Content\kaiadmin-lite-1.2.0\LICENSE" />
     <Content Include="Content\kaiadmin-lite-1.2.0\README.md" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\DataModels\Model1.csdl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\DataModels\Model1.msl" />
+    <Content Include="obj\Debug\edmxResourcesToEmbed\Models\DataModels\Model1.ssdl" />
+    <Content Include="obj\Debug\ProjectS.2E59BB54.Up2Date" />
+    <Content Include="obj\Debug\ProjectSevenDayNight.csproj.AssemblyReference.cache" />
+    <Content Include="obj\Debug\ProjectSevenDayNight.csproj.CoreCompileInputs.cache" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -862,6 +884,27 @@
     <Content Include="Views\About\AboutList.cshtml" />
     <Content Include="Views\About\CreateAbout.cshtml" />
     <Content Include="Views\About\UpdateAbout.cshtml" />
+    <Content Include="Views\CompanyStats\CompanyStatsList.cshtml" />
+    <Content Include="Views\CompanyStats\CreateCompanyStats.cshtml" />
+    <Content Include="Views\CompanyStats\UpdateCompanyStats.cshtml" />
+    <Content Include="Views\Contact\ContactList.cshtml" />
+    <Content Include="Views\Contact\CreateContact.cshtml" />
+    <Content Include="Views\Contact\UpdateContact.cshtml" />
+    <Content Include="Views\Crausel\CrauselList.cshtml" />
+    <Content Include="Views\Crausel\CreateCrausel.cshtml" />
+    <Content Include="Views\Crausel\UpdateCrausel.cshtml" />
+    <Content Include="Views\Employee\CreateEmployee.cshtml" />
+    <Content Include="Views\Employee\EmployeeList.cshtml" />
+    <Content Include="Views\Employee\UpdateEmployee.cshtml" />
+    <Content Include="Views\Faq\CreateFaq.cshtml" />
+    <Content Include="Views\Faq\FaqList.cshtml" />
+    <Content Include="Views\Faq\UpdateFaq.cshtml" />
+    <Content Include="Views\Feature\CreateFeature.cshtml" />
+    <Content Include="Views\Feature\FeatureList.cshtml" />
+    <Content Include="Views\Feature\UpdateFeature.cshtml" />
+    <Content Include="Views\Service\CreateService.cshtml" />
+    <Content Include="Views\Service\ServiceList.cshtml" />
+    <Content Include="Views\Service\UpdateService.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
