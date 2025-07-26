@@ -6,7 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="69901896a27c4696babe9ccae5fe3c55" Name="Diagram1">
         <EntityTypeShape EntityType="DayNightDbModel.TblCategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DayNightDbModel.TblProduct" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayNightDbModel.TblProduct" Width="1.5" PointX="3.25" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DayNightDbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4" />
+        <AssociationConnector Association="DayNightDbModel.FK_TblProduct_TblCategory" />
+        <EntityTypeShape EntityType="DayNightDbModel.Contact" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DayNightDbModel.Crausel" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DayNightDbModel.Employee" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DayNightDbModel.Faq" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DayNightDbModel.Feature" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DayNightDbModel.Service" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DayNightDbModel.CompanyStats" Width="1.5" PointX="6.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DayNightDbModel.About" Width="1.5" PointX="3.25" PointY="3.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

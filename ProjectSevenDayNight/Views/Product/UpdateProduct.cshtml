@@ -1,0 +1,33 @@
+﻿@model ProjectSevenDayNight.Models.DataModels.TblProduct
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <div class="alert alert-primary"><h2>Ürün Güncelle</h2></div>
+    <form method="post">
+        <input type="hidden" name="ProductId" value="@Model.ProductId" />
+        <label>Ürün Adı</label>
+        <input type="text" name="ProductName" class="form-control" value="@Model.ProductName" />
+        <br />
+        <label>Ürün Stok sayısı</label>
+        <input type="number" name="ProductStock" class="form-control" value="@Model.ProductStock" />
+        <br />
+        <label>Ürün Fiyatı</label>
+        <input type="number" step="0.01" name="ProductPrice" class="form-control" value="@Model.ProductPrice" />
+        <br />
+        <label>Ürün Durumu</label>
+        <select name="ProductStatus" class="form-control">
+            <option value="true" @(Model.ProductStatus == true ? "selected" : "")>Aktif</option>
+            <option value="false" @(Model.ProductStatus == false ? "selected" : "")>Pasif</option>
+        </select>
+        <br />
+        <label>Ürün Kategorisi</label>
+        <input type="text" class="form-control" value="@(Model.TblCategory != null ? Model.TblCategory.CategoryName : "Kategori Yok")" disabled />
+        <br />
+        <button class="btn btn-success">Ürünü Güncelle</button>
+        <a href="/Product/ProductListWithCategory" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Web;
 using System.Web.Mvc;
 using ProjectSevenDayNight.Models.DataModels;
+using System.Data.Entity;
 
 namespace ProjectSevenDayNight.Controllers
 {
@@ -56,6 +58,12 @@ namespace ProjectSevenDayNight.Controllers
             value.ProductStatus =true; 
             db.SaveChanges();
             return RedirectToAction("ProductList");
+        }
+
+        public ActionResult ProductListWithCategory()
+        {
+           var values = db.TblProduct.Include(p => p.TblCategory).ToList();
+            return View(values);
         }
     }
 

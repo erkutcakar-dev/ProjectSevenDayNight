@@ -27,5 +27,14 @@ namespace ProjectSevenDayNight.Models.DataModels
     
         public virtual DbSet<TblCategory> TblCategory { get; set; }
         public virtual DbSet<TblProduct> TblProduct { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Contact> Contact { get; set; }
+        public virtual DbSet<Crausel> Crausel { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Faq> Faq { get; set; }
+        public virtual DbSet<Feature> Feature { get; set; }
+        public virtual DbSet<Service> Service { get; set; }
+        public virtual DbSet<CompanyStats> CompanyStats { get; set; }
+        public virtual DbSet<About> About { get; set; }
     }
 }

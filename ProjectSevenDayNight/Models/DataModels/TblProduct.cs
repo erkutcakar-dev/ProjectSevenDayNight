@@ -19,5 +19,8 @@ namespace ProjectSevenDayNight.Models.DataModels
         public Nullable<int> ProductStock { get; set; }
         public Nullable<decimal> ProductPrice { get; set; }
         public Nullable<bool> ProductStatus { get; set; }
+        public Nullable<int> CategoryId { get; set; }
+    
+        public virtual TblCategory TblCategory { get; set; }
     }
 }

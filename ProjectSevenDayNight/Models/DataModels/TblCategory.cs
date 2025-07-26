@@ -14,7 +14,16 @@ namespace ProjectSevenDayNight.Models.DataModels
     
     public partial class TblCategory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblCategory()
+        {
+            this.TblProduct = new HashSet<TblProduct>();
+        }
+    
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblProduct> TblProduct { get; set; }
     }
 }

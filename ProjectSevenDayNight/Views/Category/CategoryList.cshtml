@@ -17,8 +17,9 @@
         {
             <tr>
                 <td>@item.CategoryId</td>
-                <td>@item.CategoryName</td>             
-               
+                <td>@item.CategoryName</td>
+                <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Kategori Sil</a></td>
+                <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-primary">Kategori Güncelle</a></td>
             </tr>
         }
     </table>

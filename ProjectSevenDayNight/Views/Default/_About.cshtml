@@ -1,0 +1,27 @@
+@model List<ProjectSevenDayNight.Models.DataModels.About>
+@foreach (var item in Model)
+{
+    <div class="container-fluid bg-light about pb-5">
+        <div class="container pb-5">
+            <div class="row g-5">
+                <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                    <div class="about-item-content bg-white rounded p-5 h-100">
+                        <h4 class="text-primary"></h4>
+                        <h1 class="display-4 mb-4">@item.Subtitle</h1>
+                        <p>
+                           @item.Title
+                        </p>
+                        <p>
+                            @item.Description
+                        </p>
+                        <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>@item.BulletPoint1</p>
+                        <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>@item.BulletPoint2</p>
+                        <p class="text-dark mb-4"><i class="fa fa-check text-primary me-3"></i>@item.BulletPoint3</p>
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="#">@item.ButtonText</a>
+                    </div>
+                </div>
+                @Html.Action("_CompanyStats")
+            </div>
+        </div>
+    </div>
+}

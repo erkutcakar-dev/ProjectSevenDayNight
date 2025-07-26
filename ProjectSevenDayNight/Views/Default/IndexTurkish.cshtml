@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@Html.Partial("_HeaderPartial")
+
+<body>
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Topbar Start -->
+    @Html.Action("_Topbar")
+
+    <!-- Navbar & Hero Start -->
+    @Html.Action("_NavbarHero")
+    <!-- Navbar & Hero End -->
+    <!-- Modal Search Start -->
+    @Html.Action("_ModalSearch")
+    <!-- Modal Search End -->
+    <!-- Carousel Start -->
+    @Html.Action("_Carousel")
+    <!-- Carousel End -->
+    <!-- Feature Start -->
+    @Html.Action("_Feature")
+    <!-- Feature End -->
+    <!-- About Start -->
+    @Html.Action("_About")
+    <!-- About End -->
+    <!-- Service Start -->
+    @Html.Action("_Service")
+    <!-- Service End -->
+    <!-- FAQs Start -->
+    @Html.Action("_Faq")
+    <!-- FAQs End -->
+    <!-- Blog Start -->
+    <!-- Blog End -->
+    <!-- Team Start -->
+    @Html.Action("_Empoloyee")
+    <!-- Team End -->
+    <!-- Testimonial Start -->
+    <!-- Testimonial End -->
+    <!-- Footer Start -->
+    @Html.Action("_Footer")
+    <!-- Footer End -->
+    <!-- Copyright Start -->
+    @Html.Action("_Copyright")
+    <!-- Copyright End -->
+    <!-- Back to Top -->
+    @Html.Action("_ScriptPartial")
+    <!-- Spinner End -->
+    
+
+</body>
+
+</html>
