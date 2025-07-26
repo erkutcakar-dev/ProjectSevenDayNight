@@ -8,10 +8,14 @@ using ProjectSevenDayNight.Models.DataModels;
 
 namespace ProjectSevenDayNight.Controllers
 {
-    public class DefaultController : Controller
+    public class DefaultController : BaseController
     {
      DayNightDbEntities DayNightDbEntities = new DayNightDbEntities();
-        public ActionResult IndexEnglish()
+        public ActionResult Index_En()
+        {
+            return View();
+        }
+        public ActionResult Index_De()
         {
             return View();
         }

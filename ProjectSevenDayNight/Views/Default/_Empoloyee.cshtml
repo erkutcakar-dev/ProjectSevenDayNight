@@ -1,10 +1,11 @@
+@using ProjectSevenDayNight.Helpers
 @model List<ProjectSevenDayNight.Models.DataModels.Employee>
 
 <div class="container-fluid team pb-5">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-            <h4 class="text-primary">Our Team</h4>
-            <h1 class="display-4 mb-4">Meet Our Expert Team Members</h1>
+            <h4 class="text-primary">@SimpleResourceHelper.GetString("TeamTitle")</h4>
+            <h1 class="display-4 mb-4">@SimpleResourceHelper.GetString("TeamSubtitle")</h1>
             <p class="mb-0">
                 Our team consists of experts and experienced professionals. We are here to provide you with the best service.
             </p>

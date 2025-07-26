@@ -1,0 +1,58 @@
+@using ProjectSevenDayNight.Helpers
+@{
+    ViewBag.Title = "Language Test";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@Html.Resource("Language") Test</h2>
+            <p>Current Language: @ViewBag.CurrentLanguage</p>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h4>@Html.Resource("Navigation")</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>@SimpleResourceHelper.GetString("Home"):</strong> @SimpleResourceHelper.GetString("Home")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("About"):</strong> @SimpleResourceHelper.GetString("About")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("Services"):</strong> @SimpleResourceHelper.GetString("Services")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("Contact"):</strong> @SimpleResourceHelper.GetString("Contact")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("FAQ"):</strong> @SimpleResourceHelper.GetString("FAQ")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("Team"):</strong> @SimpleResourceHelper.GetString("Team")</p>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h4>@Html.Resource("Topbar")</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>@SimpleResourceHelper.GetString("FindLocation"):</strong> @SimpleResourceHelper.GetString("FindLocation")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("Email"):</strong> @SimpleResourceHelper.GetString("Email")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("Language"):</strong> @SimpleResourceHelper.GetString("Language")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("LanguageEnglish"):</strong> @SimpleResourceHelper.GetString("LanguageEnglish")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("LanguageGerman"):</strong> @SimpleResourceHelper.GetString("LanguageGerman")</p>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h4>@Html.Resource("Hero Section")</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>@SimpleResourceHelper.GetString("HeroTitle"):</strong> @SimpleResourceHelper.GetString("HeroTitle")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("HeroSubtitle"):</strong> @SimpleResourceHelper.GetString("HeroSubtitle")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("GetQuote"):</strong> @SimpleResourceHelper.GetString("GetQuote")</p>
+                    <p><strong>@SimpleResourceHelper.GetString("LearnMore"):</strong> @SimpleResourceHelper.GetString("LearnMore")</p>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <h4>Language Switcher:</h4>
+                <a href="@Url.Action("ChangeLanguage", "Language", new { language = "en" })" class="btn btn-primary">@SimpleResourceHelper.GetString("LanguageEnglish")</a>
+                <a href="@Url.Action("ChangeLanguage", "Language", new { language = "de" })" class="btn btn-success">@SimpleResourceHelper.GetString("LanguageGerman")</a>
+            </div>
+        </div>
+    </div>
+</div> 

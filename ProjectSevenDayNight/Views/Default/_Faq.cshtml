@@ -1,10 +1,11 @@
-﻿@model List<ProjectSevenDayNight.Models.DataModels.Faq>
+﻿@using ProjectSevenDayNight.Helpers
+@model List<ProjectSevenDayNight.Models.DataModels.Faq>
 
 <div class="container-fluid faq-section bg-light py-5">
     <div class="container py-5">
         <div class="mb-5 text-center">
-            <h4 class="text-primary">Some Important FAQ's</h4>  @*title here*@
-            <h1 class="display-4 mb-0">Common Frequently Asked Questions</h1> @*subtitle here*@
+            <h4 class="text-primary">@SimpleResourceHelper.GetString("FAQTitle")</h4>
+            <h1 class="display-4 mb-0">@SimpleResourceHelper.GetString("FAQSubtitle")</h1>
         </div>
 
         <div class="row g-5">

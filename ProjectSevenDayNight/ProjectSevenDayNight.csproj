@@ -135,6 +135,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\English.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>English.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -151,6 +156,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Helpers\ResourceHelper.cs" />
+    <Compile Include="Helpers\SimpleResourceHelper.cs" />
+    <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -846,7 +856,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Default\IndexTurkish.cshtml" />
+    <Content Include="Views\Default\Index_En.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -905,6 +915,7 @@
     <Content Include="Views\Service\CreateService.cshtml" />
     <Content Include="Views\Service\ServiceList.cshtml" />
     <Content Include="Views\Service\UpdateService.cshtml" />
+    <Content Include="Views\Default\Index_De.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -939,6 +950,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\English.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>English.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\German.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>German.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

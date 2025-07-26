@@ -1,3 +1,4 @@
+@using ProjectSevenDayNight.Helpers
 @model List<ProjectSevenDayNight.Models.DataModels.About>
 @foreach (var item in Model)
 {
@@ -6,7 +7,7 @@
             <div class="row g-5">
                 <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
                     <div class="about-item-content bg-white rounded p-5 h-100">
-                        <h4 class="text-primary"></h4>
+                        <h4 class="text-primary">@SimpleResourceHelper.GetString("AboutTitle")</h4>
                         <h1 class="display-4 mb-4">@item.Subtitle</h1>
                         <p>
                            @item.Title

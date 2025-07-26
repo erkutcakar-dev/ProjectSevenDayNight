@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Home" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Dienstleistungen</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="FindLocation" xml:space="preserve">
+    <value>Standort finden</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>Englisch</value>
+  </data>
+  <data name="LanguageGerman" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
+  <data name="HeroTitle" xml:space="preserve">
+    <value>Wir bauen Ihren Traum</value>
+  </data>
+  <data name="HeroSubtitle" xml:space="preserve">
+    <value>Professionelles &amp; engagiertes Team</value>
+  </data>
+  <data name="GetQuote" xml:space="preserve">
+    <value>Angebot anfordern</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Mehr erfahren</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="AboutSubtitle" xml:space="preserve">
+    <value>Wir sind hier, um Ihnen beim Aufbau Ihres Traums zu helfen</value>
+  </data>
+  <data name="ServicesTitle" xml:space="preserve">
+    <value>Unsere Dienstleistungen</value>
+  </data>
+  <data name="ServicesSubtitle" xml:space="preserve">
+    <value>Wir bieten eine breite Palette von Dienstleistungen, um Ihre Bedürfnisse zu erfüllen</value>
+  </data>
+  <data name="ServicesDescription" xml:space="preserve">
+    <value>Von der Webentwicklung bis zum digitalen Marketing ist unser Team hier, um Ihnen zum Erfolg zu verhelfen</value>
+  </data>
+  <data name="FAQTitle" xml:space="preserve">
+    <value>Häufig gestellte Fragen</value>
+  </data>
+  <data name="FAQSubtitle" xml:space="preserve">
+    <value>Finden Sie Antworten auf häufige Fragen</value>
+  </data>
+  <data name="TeamTitle" xml:space="preserve">
+    <value>Unser Team</value>
+  </data>
+  <data name="TeamSubtitle" xml:space="preserve">
+    <value>Lernen Sie unser professionelles Team kennen</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Kontaktieren Sie uns</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>Folgen Sie uns</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>© 2024 Alle Rechte vorbehalten</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
+  <data name="Topbar" xml:space="preserve">
+    <value>Topbar</value>
+  </data>
+  <data name="Hero Section" xml:space="preserve">
+    <value>Hero-Bereich</value>
+  </data>
+</root> 

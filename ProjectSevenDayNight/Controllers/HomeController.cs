@@ -6,24 +6,28 @@ using System.Web.Mvc;
 
 namespace ProjectSevenDayNight.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index_En", "Default");
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+            return View();
+        }
 
+        public ActionResult TestLanguage()
+        {
+            ViewBag.CurrentLanguage = GetCurrentLanguage();
             return View();
         }
     }
