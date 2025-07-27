@@ -14,6 +14,12 @@ namespace ProjectSevenDayNight.Models.DataModels
     
     public partial class TblProduct
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblProduct()
+        {
+            this.ProductTranslations = new HashSet<ProductTranslations>();
+        }
+    
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public Nullable<int> ProductStock { get; set; }
@@ -22,5 +28,7 @@ namespace ProjectSevenDayNight.Models.DataModels
         public Nullable<int> CategoryId { get; set; }
     
         public virtual TblCategory TblCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductTranslations> ProductTranslations { get; set; }
     }
 }

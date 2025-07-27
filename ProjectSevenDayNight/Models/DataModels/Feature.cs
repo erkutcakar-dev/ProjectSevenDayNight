@@ -14,9 +14,18 @@ namespace ProjectSevenDayNight.Models.DataModels
     
     public partial class Feature
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Feature()
+        {
+            this.FeatureTranslations = new HashSet<FeatureTranslations>();
+        }
+    
         public int FeatureId { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
         public string ImageUrl { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FeatureTranslations> FeatureTranslations { get; set; }
     }
 }

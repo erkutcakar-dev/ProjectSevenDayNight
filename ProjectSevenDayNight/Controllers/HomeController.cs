@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProjectSevenDayNight.Models.DataModels;
 
 namespace ProjectSevenDayNight.Controllers
 {
@@ -30,5 +31,25 @@ namespace ProjectSevenDayNight.Controllers
             ViewBag.CurrentLanguage = GetCurrentLanguage();
             return View();
         }
+
+                        public ActionResult DebugDatabase()
+                {
+                    using (var db = new DayNightDbEntities())
+                    {
+                        ViewBag.AboutData = db.About.ToList();
+                        ViewBag.ServiceData = db.Service.ToList();
+                        ViewBag.FaqData = db.Faq.ToList();
+                        ViewBag.EmployeeData = db.Employee.ToList();
+                        ViewBag.CategoryData = db.TblCategory.ToList();
+                        ViewBag.ProductData = db.TblProduct.ToList();
+                        ViewBag.ContactData = db.Contact.ToList();
+                        ViewBag.FeatureData = db.Feature.ToList();
+                        
+                        // Çeviri verilerini de kontrol edelim
+                        ViewBag.FeatureTranslations = db.FeatureTranslations.Where(t => t.LanguageCode == "de").ToList();
+                        ViewBag.FaqTranslations = db.FaqTranslations.Where(t => t.LanguageCode == "de").ToList();
+                    }
+                    return View();
+                }
     }
 }

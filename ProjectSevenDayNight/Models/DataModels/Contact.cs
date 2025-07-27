@@ -14,6 +14,12 @@ namespace ProjectSevenDayNight.Models.DataModels
     
     public partial class Contact
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Contact()
+        {
+            this.ContactTranslations = new HashSet<ContactTranslations>();
+        }
+    
         public int ContactId { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
@@ -23,5 +29,8 @@ namespace ProjectSevenDayNight.Models.DataModels
         public string Address { get; set; }
         public string Mail { get; set; }
         public string Telephone { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContactTranslations> ContactTranslations { get; set; }
     }
 }

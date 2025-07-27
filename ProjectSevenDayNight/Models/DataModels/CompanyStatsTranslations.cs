@@ -12,21 +12,14 @@ namespace ProjectSevenDayNight.Models.DataModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Faq
+    public partial class CompanyStatsTranslations
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Faq()
-        {
-            this.FaqTranslations = new HashSet<FaqTranslations>();
-        }
-    
-        public int FaqId { get; set; }
+        public int TranslationId { get; set; }
+        public int StatId { get; set; }
+        public string LanguageCode { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
-        public string Question { get; set; }
-        public string Answer { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FaqTranslations> FaqTranslations { get; set; }
+        public virtual CompanyStats CompanyStats { get; set; }
     }
 }

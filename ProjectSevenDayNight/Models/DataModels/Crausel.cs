@@ -14,9 +14,18 @@ namespace ProjectSevenDayNight.Models.DataModels
     
     public partial class Crausel
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Crausel()
+        {
+            this.CrauselTranslations = new HashSet<CrauselTranslations>();
+        }
+    
         public int CrauselId { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
         public string Description { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CrauselTranslations> CrauselTranslations { get; set; }
     }
 }

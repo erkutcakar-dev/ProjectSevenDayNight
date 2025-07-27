@@ -48,6 +48,22 @@
                 </div>
             </div>
 
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h4>Dynamic Translation Test</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Sample About Title:</strong> @SimpleLanguageHelper.Translate("About Us")</p>
+                    <p><strong>Sample Service:</strong> @SimpleLanguageHelper.Translate("Web Development")</p>
+                    <p><strong>Sample Job Title:</strong> @SimpleLanguageHelper.Translate("CEO")</p>
+                    <p><strong>Sample FAQ Question:</strong> @SimpleLanguageHelper.Translate("What services do you offer?")</p>
+                    <p><strong>Sample Category:</strong> @SimpleLanguageHelper.Translate("Electronics")</p>
+                    <p><strong>Sample Feature:</strong> @SimpleLanguageHelper.Translate("Modern Design")</p>
+                    <p><strong>Sample More Services:</strong> @SimpleLanguageHelper.Translate("More Services")</p>
+                    <p><strong>Sample Team Description:</strong> @SimpleLanguageHelper.Translate("Our team consists of experts and experienced professionals. We are here to provide you with the best service.")</p>
+                </div>
+            </div>
+
             <div class="mt-4">
                 <h4>Language Switcher:</h4>
                 <a href="@Url.Action("ChangeLanguage", "Language", new { language = "en" })" class="btn btn-primary">@SimpleResourceHelper.GetString("LanguageEnglish")</a>

@@ -14,6 +14,12 @@ namespace ProjectSevenDayNight.Models.DataModels
     
     public partial class About
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public About()
+        {
+            this.AboutTranslations = new HashSet<AboutTranslations>();
+        }
+    
         public int AboutId { get; set; }
         public string Subtitle { get; set; }
         public string Title { get; set; }
@@ -22,5 +28,8 @@ namespace ProjectSevenDayNight.Models.DataModels
         public string BulletPoint2 { get; set; }
         public string BulletPoint3 { get; set; }
         public string ButtonText { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AboutTranslations> AboutTranslations { get; set; }
     }
 }

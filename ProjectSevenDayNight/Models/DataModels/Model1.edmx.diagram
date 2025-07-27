@@ -17,6 +17,26 @@
         <EntityTypeShape EntityType="DayNightDbModel.Service" Width="1.5" PointX="7.75" PointY="3.75" />
         <EntityTypeShape EntityType="DayNightDbModel.CompanyStats" Width="1.5" PointX="6.375" PointY="7.75" />
         <EntityTypeShape EntityType="DayNightDbModel.About" Width="1.5" PointX="3.25" PointY="3.875" />
+        <EntityTypeShape EntityType="DayNightDbModel.AboutTranslations" Width="1.5" PointX="5.5" PointY="17.625" />
+        <EntityTypeShape EntityType="DayNightDbModel.CategoryTranslations" Width="1.5" PointX="3" PointY="11" />
+        <EntityTypeShape EntityType="DayNightDbModel.EmployeeTranslations" Width="1.5" PointX="3" PointY="17.625" />
+        <EntityTypeShape EntityType="DayNightDbModel.FaqTranslations" Width="1.5" PointX="10" PointY="7.125" />
+        <EntityTypeShape EntityType="DayNightDbModel.FeatureTranslations" Width="1.5" PointX="5" PointY="14.625" />
+        <EntityTypeShape EntityType="DayNightDbModel.ProductTranslations" Width="1.5" PointX="5.5" PointY="10.875" />
+        <EntityTypeShape EntityType="DayNightDbModel.ServiceTranslations" Width="1.5" PointX="10" PointY="3.625" />
+        <AssociationConnector Association="DayNightDbModel.FK__AboutTran__About__4AB81AF0" />
+        <AssociationConnector Association="DayNightDbModel.FK__CategoryT__Categ__5DCAEF64" />
+        <AssociationConnector Association="DayNightDbModel.FK__EmployeeT__Emplo__52593CB8" />
+        <AssociationConnector Association="DayNightDbModel.FK__FaqTransl__FaqId__5629CD9C" />
+        <AssociationConnector Association="DayNightDbModel.FK__FeatureTr__Featu__59FA5E80" />
+        <AssociationConnector Association="DayNightDbModel.FK__ProductTr__Produ__619B8048" />
+        <AssociationConnector Association="DayNightDbModel.FK__ServiceTr__Servi__4E88ABD4" />
+        <EntityTypeShape EntityType="DayNightDbModel.CompanyStatsTranslations" Width="1.5" PointX="8.625" PointY="18.75" />
+        <EntityTypeShape EntityType="DayNightDbModel.ContactTranslations" Width="1.5" PointX="8" PointY="15" />
+        <EntityTypeShape EntityType="DayNightDbModel.CrauselTranslations" Width="1.5" PointX="8" PointY="11.5" />
+        <AssociationConnector Association="DayNightDbModel.FK__CompanySt__StatI__6D0D32F4" />
+        <AssociationConnector Association="DayNightDbModel.FK__ContactTr__Conta__75A278F5" />
+        <AssociationConnector Association="DayNightDbModel.FK__CrauselTr__Craus__70DDC3D8" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

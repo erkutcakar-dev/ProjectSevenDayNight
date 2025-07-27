@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using ProjectSevenDayNight.Models.DataModels;
+using ProjectSevenDayNight.Helpers;
 
 namespace ProjectSevenDayNight.Controllers
 {
@@ -28,6 +29,16 @@ namespace ProjectSevenDayNight.Controllers
         {
             db.About.Add(about);
             db.SaveChanges();
+            
+            // Otomatik çeviri ekle
+            AutoTranslationHelper.AddAutoTranslation(about, "Title", about.Title);
+            AutoTranslationHelper.AddAutoTranslation(about, "Subtitle", about.Subtitle);
+            AutoTranslationHelper.AddAutoTranslation(about, "Description", about.Description);
+            AutoTranslationHelper.AddAutoTranslation(about, "BulletPoint1", about.BulletPoint1);
+            AutoTranslationHelper.AddAutoTranslation(about, "BulletPoint2", about.BulletPoint2);
+            AutoTranslationHelper.AddAutoTranslation(about, "BulletPoint3", about.BulletPoint3);
+            AutoTranslationHelper.AddAutoTranslation(about, "ButtonText", about.ButtonText);
+            
             return RedirectToAction("AboutList");
         }
         public ActionResult DeleteAbout(int id)
@@ -68,6 +79,15 @@ namespace ProjectSevenDayNight.Controllers
             value.ButtonText = about.ButtonText;
 
             db.SaveChanges();
+            
+            // Otomatik çeviri güncelle
+            AutoTranslationHelper.AddAutoTranslation(value, "Title", about.Title);
+            AutoTranslationHelper.AddAutoTranslation(value, "Subtitle", about.Subtitle);
+            AutoTranslationHelper.AddAutoTranslation(value, "Description", about.Description);
+            AutoTranslationHelper.AddAutoTranslation(value, "BulletPoint1", about.BulletPoint1);
+            AutoTranslationHelper.AddAutoTranslation(value, "BulletPoint2", about.BulletPoint2);
+            AutoTranslationHelper.AddAutoTranslation(value, "BulletPoint3", about.BulletPoint3);
+            AutoTranslationHelper.AddAutoTranslation(value, "ButtonText", about.ButtonText);
             return RedirectToAction("AboutList");
         }
 

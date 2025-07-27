@@ -14,11 +14,20 @@ namespace ProjectSevenDayNight.Models.DataModels
     
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            this.EmployeeTranslations = new HashSet<EmployeeTranslations>();
+        }
+    
         public int EmployeeId { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
         public string ImageUrl { get; set; }
         public string NameSurname { get; set; }
         public string Job { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeTranslations> EmployeeTranslations { get; set; }
     }
 }

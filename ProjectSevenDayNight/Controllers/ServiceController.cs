@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using ProjectSevenDayNight.Models.DataModels;
+using ProjectSevenDayNight.Helpers;
 
 namespace ProjectSevenDayNight.Controllers
 {
@@ -25,6 +26,13 @@ namespace ProjectSevenDayNight.Controllers
         {
             db.Service.Add(service);
             db.SaveChanges();
+            
+            // Otomatik çeviri ekle
+            AutoTranslationHelper.AddAutoTranslation(service, "Title", service.Title);
+            AutoTranslationHelper.AddAutoTranslation(service, "Subtitle", service.Subtitle);
+            AutoTranslationHelper.AddAutoTranslation(service, "CardTitle", service.CardTitle);
+            AutoTranslationHelper.AddAutoTranslation(service, "CardDescription", service.CardDescription);
+            
             return RedirectToAction("ServiceList");
         }
         
@@ -65,6 +73,12 @@ namespace ProjectSevenDayNight.Controllers
             value.CardImageUrl = service.CardImageUrl;
 
             db.SaveChanges();
+            
+            // Otomatik çeviri güncelle
+            AutoTranslationHelper.AddAutoTranslation(value, "Title", service.Title);
+            AutoTranslationHelper.AddAutoTranslation(value, "Subtitle", service.Subtitle);
+            AutoTranslationHelper.AddAutoTranslation(value, "CardTitle", service.CardTitle);
+            AutoTranslationHelper.AddAutoTranslation(value, "CardDescription", service.CardDescription);
             return RedirectToAction("ServiceList");
         }
     }

@@ -1,3 +1,4 @@
+@using ProjectSevenDayNight.Helpers
 @model List<ProjectSevenDayNight.Models.DataModels.Contact>
 @{
     ViewBag.Title = "Contact List";
@@ -42,12 +43,12 @@
                         {
                             <tr>
                                 <td>@item.ContactId</td>
-                                <td>@item.Title</td>
-                                <td>@item.Subtitle</td>
-                                <td>@item.Description</td>
+                                <td>@item.T("Title")</td>
+                                <td>@item.T("Subtitle")</td>
+                                <td>@item.T("Description")</td>
                                 <td>@item.SocialMedia</td>
                                 <td>@item.SocialMediaImageUrl</td>
-                                <td>@item.Address</td>
+                                <td>@item.T("Address")</td>
                                 <td>@item.Mail</td>
                                 <td>@item.Telephone</td>
                                 <td>

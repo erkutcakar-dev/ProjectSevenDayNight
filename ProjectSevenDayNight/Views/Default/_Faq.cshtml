@@ -27,12 +27,12 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="@headingId">
                                 <button class="accordion-button border-0 @(isFirst ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="@(isFirst.ToString().ToLower())" aria-controls="@collapseId">
-                                    @item.Question
+                                    @item.T("Question")
                                 </button>
                             </h2>
                             <div id="@collapseId" class="accordion-collapse collapse @(isFirst ? "show" : "")" aria-labelledby="@headingId" data-bs-parent="#accordionExampleLeft">
                                 <div class="accordion-body rounded">
-                                    @item.Answer
+                                    @item.T("Answer")
                                 </div>
                             </div>
                         </div>
@@ -56,12 +56,12 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="@headingId">
                                 <button class="accordion-button border-0 @(isFirst ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="@(isFirst.ToString().ToLower())" aria-controls="@collapseId">
-                                    @item.Question
+                                    @item.T("Question")
                                 </button>
                             </h2>
                             <div id="@collapseId" class="accordion-collapse collapse @(isFirst ? "show" : "")" aria-labelledby="@headingId" data-bs-parent="#accordionExampleRight">
                                 <div class="accordion-body rounded">
-                                    @item.Answer
+                                    @item.T("Answer")
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,5 @@
 ﻿@model List<ProjectSevenDayNight.Models.DataModels.TblProduct>
+@using ProjectSevenDayNight.Helpers
 @{
     Layout = null;
 }
@@ -8,13 +9,13 @@
     <table class="table table-hover">
         <tr>
             <th>#</th>
-            <th>Ürün Adı</th>
-            <th>Ürün Stok</th>
-            <th>Ürün Durumu</th>
-            <th>Ürün Ücreti</th>
-            <th>Ürün Kategori</th>
-            <th>Sil</th>
-            <th>Güncelle</th>
+            <th>@SimpleResourceHelper.GetString("ProductName")</th>
+            <th>@SimpleResourceHelper.GetString("ProductStock")</th>
+            <th>@SimpleResourceHelper.GetString("ProductStatus")</th>
+            <th>@SimpleResourceHelper.GetString("ProductPrice")</th>
+            <th>@SimpleResourceHelper.GetString("ProductCategory")</th>
+            <th>@SimpleResourceHelper.GetString("DeleteProduct")</th>
+            <th>@SimpleResourceHelper.GetString("UpdateProduct")</th>
 
         </tr>
 
@@ -22,18 +23,18 @@
         {
             <tr>
                 <td>@item.ProductId</td>
-                <td>@item.ProductName</td>
+                <td>@item.T("ProductName")</td>
                 <td>@item.ProductStock</td>
                 <td>@item.ProductStatus</td>
                 <td>@item.ProductPrice</td>
-                <td>@(item.TblCategory != null ? item.TblCategory.CategoryName : "Kategori Yok")</td>
-                <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Ürün Sil</a></td>
-                <td><a href="/Product/UpdateProduct/@item.ProductId" class="btn btn-primary">Ürün Güncelle</a></td>
+                <td>@(item.TblCategory != null ? item.TblCategory.T("CategoryName") : SimpleResourceHelper.GetString("NoCategory"))</td>
+                <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">@SimpleResourceHelper.GetString("DeleteProduct")</a></td>
+                <td><a href="/Product/UpdateProduct/@item.ProductId" class="btn btn-primary">@SimpleResourceHelper.GetString("UpdateProduct")</a></td>
 
 
 
             </tr>
         }
     </table>
-    <a href="/Product/CreateProduct/" class="btn btn-primary">Yeni Ürün Girişi</a>
+    <a href="/Product/CreateProduct/" class="btn btn-primary">@SimpleResourceHelper.GetString("AddNewProduct")</a>
 </div>

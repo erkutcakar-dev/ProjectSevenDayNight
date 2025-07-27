@@ -135,4 +135,43 @@
   <data name="Hero Section" xml:space="preserve">
     <value>Hero-Bereich</value>
   </data>
+  <data name="NoCategory" xml:space="preserve">
+    <value>Keine Kategorie</value>
+  </data>
+  <data name="DeleteProduct" xml:space="preserve">
+    <value>Produkt löschen</value>
+  </data>
+  <data name="UpdateProduct" xml:space="preserve">
+    <value>Produkt aktualisieren</value>
+  </data>
+  <data name="AddNewProduct" xml:space="preserve">
+    <value>Neues Produkt hinzufügen</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Produktname</value>
+  </data>
+  <data name="ProductStock" xml:space="preserve">
+    <value>Produktbestand</value>
+  </data>
+  <data name="ProductStatus" xml:space="preserve">
+    <value>Produktstatus</value>
+  </data>
+  <data name="ProductPrice" xml:space="preserve">
+    <value>Produktpreis</value>
+  </data>
+      <data name="ProductCategory" xml:space="preserve">
+        <value>Produktkategorie</value>
+    </data>
+    <data name="FeaturesTitle" xml:space="preserve">
+        <value>Unsere Features</value>
+    </data>
+    <data name="FeaturesSubtitle" xml:space="preserve">
+        <value>Entdecken Sie unser Angebot</value>
+    </data>
+    <data name="FeaturesDescription" xml:space="preserve">
+        <value>Sichern Sie Ihre Zukunft mit Versicherung, machen Sie Ihr Leben einfacher.</value>
+    </data>
+    <data name="MoreInfo" xml:space="preserve">
+        <value>Mehr Info</value>
+    </data>
 </root> 

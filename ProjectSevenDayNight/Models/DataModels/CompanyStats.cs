@@ -14,10 +14,19 @@ namespace ProjectSevenDayNight.Models.DataModels
     
     public partial class CompanyStats
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CompanyStats()
+        {
+            this.CompanyStatsTranslations = new HashSet<CompanyStatsTranslations>();
+        }
+    
         public int StatId { get; set; }
         public string Title { get; set; }
         public Nullable<int> Value { get; set; }
         public string Unit { get; set; }
         public Nullable<int> DisplayOrder { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CompanyStatsTranslations> CompanyStatsTranslations { get; set; }
     }
 }

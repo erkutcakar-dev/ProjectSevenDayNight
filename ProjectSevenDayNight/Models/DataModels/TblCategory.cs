@@ -18,6 +18,7 @@ namespace ProjectSevenDayNight.Models.DataModels
         public TblCategory()
         {
             this.TblProduct = new HashSet<TblProduct>();
+            this.CategoryTranslations = new HashSet<CategoryTranslations>();
         }
     
         public int CategoryId { get; set; }
@@ -25,5 +26,7 @@ namespace ProjectSevenDayNight.Models.DataModels
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblProduct> TblProduct { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CategoryTranslations> CategoryTranslations { get; set; }
     }
 }

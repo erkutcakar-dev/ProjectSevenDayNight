@@ -1,0 +1,201 @@
+@using ProjectSevenDayNight.Helpers
+@{
+    ViewBag.Title = "Database Debug";
+}
+
+<div class="container mt-5">
+    <h2>Database Debug - Veritabanı Verileri</h2>
+    <p>Current Language: @Session["CurrentLanguage"]</p>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h3>About Tablosu</h3>
+            @if (ViewBag.AboutData != null)
+            {
+                foreach (var item in ViewBag.AboutData)
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Orijinal Veriler:</h5>
+                            <p><strong>Title:</strong> @item.Title</p>
+                            <p><strong>Subtitle:</strong> @item.Subtitle</p>
+                            <p><strong>Description:</strong> @item.Description</p>
+                            <p><strong>BulletPoint1:</strong> @item.BulletPoint1</p>
+                            <p><strong>BulletPoint2:</strong> @item.BulletPoint2</p>
+                            <p><strong>BulletPoint3:</strong> @item.BulletPoint3</p>
+                            <p><strong>ButtonText:</strong> @item.ButtonText</p>
+                            
+                                                                <h5>Çevrilmiş Veriler:</h5>
+                                    <p><strong>Title:</strong> @item.T("Title")</p>
+                                    <p><strong>Subtitle:</strong> @item.T("Subtitle")</p>
+                                    <p><strong>Description:</strong> @item.T("Description")</p>
+                                    <p><strong>BulletPoint1:</strong> @item.T("BulletPoint1")</p>
+                                    <p><strong>BulletPoint2:</strong> @item.T("BulletPoint2")</p>
+                                    <p><strong>BulletPoint3:</strong> @item.T("BulletPoint3")</p>
+                                    <p><strong>ButtonText:</strong> @item.T("ButtonText")</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        
+        <div class="col-md-6">
+            <h3>Service Tablosu</h3>
+            @if (ViewBag.ServiceData != null)
+            {
+                foreach (var item in ViewBag.ServiceData)
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Orijinal Veriler:</h5>
+                            <p><strong>Title:</strong> @item.Title</p>
+                            <p><strong>Subtitle:</strong> @item.Subtitle</p>
+                            <p><strong>CardTitle:</strong> @item.CardTitle</p>
+                            <p><strong>CardDescription:</strong> @item.CardDescription</p>
+                            
+                                                                <h5>Çevrilmiş Veriler:</h5>
+                                    <p><strong>Title:</strong> @item.T("Title")</p>
+                                    <p><strong>Subtitle:</strong> @item.T("Subtitle")</p>
+                                    <p><strong>CardTitle:</strong> @item.T("CardTitle")</p>
+                                    <p><strong>CardDescription:</strong> @item.T("CardDescription")</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h3>FAQ Tablosu</h3>
+            @if (ViewBag.FaqData != null)
+            {
+                foreach (var item in ViewBag.FaqData)
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Orijinal Veriler:</h5>
+                            <p><strong>Question:</strong> @item.Question</p>
+                            <p><strong>Answer:</strong> @item.Answer</p>
+                            
+                                                                <h5>Çevrilmiş Veriler:</h5>
+                                    <p><strong>Question:</strong> @item.T("Question")</p>
+                                    <p><strong>Answer:</strong> @item.T("Answer")</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        
+        <div class="col-md-6">
+            <h3>Employee Tablosu</h3>
+            @if (ViewBag.EmployeeData != null)
+            {
+                foreach (var item in ViewBag.EmployeeData)
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Orijinal Veriler:</h5>
+                            <p><strong>NameSurname:</strong> @item.NameSurname</p>
+                            <p><strong>Job:</strong> @item.Job</p>
+                            
+                                                                <h5>Çevrilmiş Veriler:</h5>
+                                    <p><strong>NameSurname:</strong> @item.T("NameSurname")</p>
+                                    <p><strong>Job:</strong> @item.T("Job")</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    
+                <div class="row mt-4">
+                <div class="col-md-6">
+                    <h3>Contact Tablosu</h3>
+                    @if (ViewBag.ContactData != null)
+                    {
+                        foreach (var item in ViewBag.ContactData)
+                        {
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5>Orijinal Veriler:</h5>
+                                    <p><strong>Title:</strong> @item.Title</p>
+                                    <p><strong>Subtitle:</strong> @item.Subtitle</p>
+                                    <p><strong>Description:</strong> @item.Description</p>
+                                    <p><strong>Address:</strong> @item.Address</p>
+                                    
+                                    <h5>Çevrilmiş Veriler:</h5>
+                                    <p><strong>Title:</strong> @item.T("Title")</p>
+                                    <p><strong>Subtitle:</strong> @item.T("Subtitle")</p>
+                                    <p><strong>Description:</strong> @item.T("Description")</p>
+                                    <p><strong>Address:</strong> @item.T("Address")</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                
+                <div class="col-md-6">
+                    <h3>Feature Tablosu</h3>
+                    @if (ViewBag.FeatureData != null)
+                    {
+                        foreach (var item in ViewBag.FeatureData)
+                        {
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5>Orijinal Veriler:</h5>
+                                    <p><strong>Title:</strong> @item.Title</p>
+                                    <p><strong>Subtitle:</strong> @item.Subtitle</p>
+                                    
+                                    <h5>Çevrilmiş Veriler:</h5>
+                                    <p><strong>Title:</strong> @item.T("Title")</p>
+                                    <p><strong>Subtitle:</strong> @item.T("Subtitle")</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h3>Feature Çeviri Verileri (Database)</h3>
+                    @if (ViewBag.FeatureTranslations != null)
+                    {
+                        foreach (var item in ViewBag.FeatureTranslations)
+                        {
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <p><strong>FeatureId:</strong> @item.FeatureId</p>
+                                    <p><strong>Title:</strong> @item.Title</p>
+                                    <p><strong>Subtitle:</strong> @item.Subtitle</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                
+                <div class="col-md-6">
+                    <h3>FAQ Çeviri Verileri (Database)</h3>
+                    @if (ViewBag.FaqTranslations != null)
+                    {
+                        foreach (var item in ViewBag.FaqTranslations)
+                        {
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <p><strong>FaqId:</strong> @item.FaqId</p>
+                                    <p><strong>Question:</strong> @item.Question</p>
+                                    <p><strong>Answer:</strong> @item.Answer</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <h4>Language Switcher:</h4>
+                <a href="@Url.Action("ChangeLanguage", "Language", new { language = "en" })" class="btn btn-primary">English</a>
+                <a href="@Url.Action("ChangeLanguage", "Language", new { language = "de" })" class="btn btn-success">Deutsch</a>
+            </div>
+</div> 

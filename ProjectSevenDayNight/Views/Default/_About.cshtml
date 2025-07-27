@@ -8,17 +8,17 @@
                 <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
                     <div class="about-item-content bg-white rounded p-5 h-100">
                         <h4 class="text-primary">@SimpleResourceHelper.GetString("AboutTitle")</h4>
-                        <h1 class="display-4 mb-4">@item.Subtitle</h1>
+                        <h1 class="display-4 mb-4">@item.T("Subtitle")</h1>
                         <p>
-                           @item.Title
+                           @item.T("Title")
                         </p>
                         <p>
-                            @item.Description
+                            @item.T("Description")
                         </p>
-                        <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>@item.BulletPoint1</p>
-                        <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>@item.BulletPoint2</p>
-                        <p class="text-dark mb-4"><i class="fa fa-check text-primary me-3"></i>@item.BulletPoint3</p>
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="#">@item.ButtonText</a>
+                        <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>@item.T("BulletPoint1")</p>
+                        <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>@item.T("BulletPoint2")</p>
+                        <p class="text-dark mb-4"><i class="fa fa-check text-primary me-3"></i>@item.T("BulletPoint3")</p>
+                        <a class="btn btn-primary rounded-pill py-3 px-5" href="#">@item.T("ButtonText")</a>
                     </div>
                 </div>
                 @Html.Action("_CompanyStats")

@@ -14,11 +14,20 @@ namespace ProjectSevenDayNight.Models.DataModels
     
     public partial class Service
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Service()
+        {
+            this.ServiceTranslations = new HashSet<ServiceTranslations>();
+        }
+    
         public int ServiceId { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
         public string CardTitle { get; set; }
         public string CardDescription { get; set; }
         public string CardImageUrl { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServiceTranslations> ServiceTranslations { get; set; }
     }
 }

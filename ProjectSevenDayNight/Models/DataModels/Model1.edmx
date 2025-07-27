@@ -18,6 +18,30 @@
           <Property Name="BulletPoint3" Type="nvarchar" MaxLength="100" />
           <Property Name="ButtonText" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="AboutTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="BulletPoint1" Type="nvarchar" MaxLength="100" />
+          <Property Name="BulletPoint2" Type="nvarchar" MaxLength="100" />
+          <Property Name="BulletPoint3" Type="nvarchar" MaxLength="100" />
+          <Property Name="ButtonText" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CategoryTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="CompanyStats">
           <Key>
             <PropertyRef Name="StatId" />
@@ -27,6 +51,16 @@
           <Property Name="Value" Type="int" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
           <Property Name="DisplayOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="CompanyStatsTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -42,6 +76,18 @@
           <Property Name="Mail" Type="nvarchar" MaxLength="100" />
           <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ContactTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+        </EntityType>
         <EntityType Name="Crausel">
           <Key>
             <PropertyRef Name="CrauselId" />
@@ -50,6 +96,18 @@
           <Property Name="Title" Type="nvarchar" MaxLength="200" />
           <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
           <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CrauselTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CrauselId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ButtonText" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -62,11 +120,35 @@
           <Property Name="NameSurname" Type="nvarchar" MaxLength="200" />
           <Property Name="Job" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="EmployeeTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="NameSurname" Type="nvarchar" MaxLength="200" />
+          <Property Name="Job" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="Faq">
           <Key>
             <PropertyRef Name="FaqId" />
           </Key>
           <Property Name="FaqId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FaqTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FaqId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="200" />
           <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
           <Property Name="Question" Type="nvarchar(max)" />
@@ -81,6 +163,25 @@
           <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
           <Property Name="ImageUrl" Type="nvarchar" MaxLength="300" />
         </EntityType>
+        <EntityType Name="FeatureTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeatureId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ProductTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Service">
           <Key>
             <PropertyRef Name="ServiceId" />
@@ -91,6 +192,18 @@
           <Property Name="CardTitle" Type="nvarchar" MaxLength="200" />
           <Property Name="CardDescription" Type="nvarchar(max)" />
           <Property Name="CardImageUrl" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="ServiceTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Subtitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="CardTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="CardDescription" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -120,6 +233,126 @@
           <Property Name="ProductStatus" Type="bit" />
           <Property Name="CategoryId" Type="int" />
         </EntityType>
+        <Association Name="FK__AboutTran__About__4AB81AF0">
+          <End Role="About" Type="Self.About" Multiplicity="1" />
+          <End Role="AboutTranslations" Type="Self.AboutTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="About">
+              <PropertyRef Name="AboutId" />
+            </Principal>
+            <Dependent Role="AboutTranslations">
+              <PropertyRef Name="AboutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CategoryT__Categ__5DCAEF64">
+          <End Role="TblCategory" Type="Self.TblCategory" Multiplicity="1" />
+          <End Role="CategoryTranslations" Type="Self.CategoryTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CategoryTranslations">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CompanySt__StatI__6D0D32F4">
+          <End Role="CompanyStats" Type="Self.CompanyStats" Multiplicity="1" />
+          <End Role="CompanyStatsTranslations" Type="Self.CompanyStatsTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyStats">
+              <PropertyRef Name="StatId" />
+            </Principal>
+            <Dependent Role="CompanyStatsTranslations">
+              <PropertyRef Name="StatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactTr__Conta__75A278F5">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="ContactTranslations" Type="Self.ContactTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="ContactTranslations">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CrauselTr__Craus__70DDC3D8">
+          <End Role="Crausel" Type="Self.Crausel" Multiplicity="1" />
+          <End Role="CrauselTranslations" Type="Self.CrauselTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Crausel">
+              <PropertyRef Name="CrauselId" />
+            </Principal>
+            <Dependent Role="CrauselTranslations">
+              <PropertyRef Name="CrauselId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeT__Emplo__52593CB8">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeTranslations" Type="Self.EmployeeTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="EmployeeTranslations">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FaqTransl__FaqId__5629CD9C">
+          <End Role="Faq" Type="Self.Faq" Multiplicity="1" />
+          <End Role="FaqTranslations" Type="Self.FaqTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faq">
+              <PropertyRef Name="FaqId" />
+            </Principal>
+            <Dependent Role="FaqTranslations">
+              <PropertyRef Name="FaqId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeatureTr__Featu__59FA5E80">
+          <End Role="Feature" Type="Self.Feature" Multiplicity="1" />
+          <End Role="FeatureTranslations" Type="Self.FeatureTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feature">
+              <PropertyRef Name="FeatureId" />
+            </Principal>
+            <Dependent Role="FeatureTranslations">
+              <PropertyRef Name="FeatureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductTr__Produ__619B8048">
+          <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="1" />
+          <End Role="ProductTranslations" Type="Self.ProductTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductTranslations">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceTr__Servi__4E88ABD4">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="ServiceTranslations" Type="Self.ServiceTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ServiceTranslations">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblProduct_TblCategory">
           <End Role="TblCategory" Type="Self.TblCategory" Multiplicity="0..1" />
           <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="*" />
@@ -132,18 +365,99 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DayNightDbModelStoreContainer">
           <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AboutTranslations" EntityType="Self.AboutTranslations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryTranslations" EntityType="Self.CategoryTranslations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyStats" EntityType="Self.CompanyStats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyStatsTranslations" EntityType="Self.CompanyStatsTranslations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactTranslations" EntityType="Self.ContactTranslations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Crausel" EntityType="Self.Crausel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CrauselTranslations" EntityType="Self.CrauselTranslations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTranslations" EntityType="Self.EmployeeTranslations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Faq" EntityType="Self.Faq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FaqTranslations" EntityType="Self.FaqTranslations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feature" EntityType="Self.Feature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeatureTranslations" EntityType="Self.FeatureTranslations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductTranslations" EntityType="Self.ProductTranslations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceTranslations" EntityType="Self.ServiceTranslations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCategory" EntityType="Self.TblCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblProduct" EntityType="Self.TblProduct" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AboutTran__About__4AB81AF0" Association="Self.FK__AboutTran__About__4AB81AF0">
+            <End Role="About" EntitySet="About" />
+            <End Role="AboutTranslations" EntitySet="AboutTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CategoryT__Categ__5DCAEF64" Association="Self.FK__CategoryT__Categ__5DCAEF64">
+            <End Role="TblCategory" EntitySet="TblCategory" />
+            <End Role="CategoryTranslations" EntitySet="CategoryTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CompanySt__StatI__6D0D32F4" Association="Self.FK__CompanySt__StatI__6D0D32F4">
+            <End Role="CompanyStats" EntitySet="CompanyStats" />
+            <End Role="CompanyStatsTranslations" EntitySet="CompanyStatsTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactTr__Conta__75A278F5" Association="Self.FK__ContactTr__Conta__75A278F5">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ContactTranslations" EntitySet="ContactTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CrauselTr__Craus__70DDC3D8" Association="Self.FK__CrauselTr__Craus__70DDC3D8">
+            <End Role="Crausel" EntitySet="Crausel" />
+            <End Role="CrauselTranslations" EntitySet="CrauselTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeT__Emplo__52593CB8" Association="Self.FK__EmployeeT__Emplo__52593CB8">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeTranslations" EntitySet="EmployeeTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FaqTransl__FaqId__5629CD9C" Association="Self.FK__FaqTransl__FaqId__5629CD9C">
+            <End Role="Faq" EntitySet="Faq" />
+            <End Role="FaqTranslations" EntitySet="FaqTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeatureTr__Featu__59FA5E80" Association="Self.FK__FeatureTr__Featu__59FA5E80">
+            <End Role="Feature" EntitySet="Feature" />
+            <End Role="FeatureTranslations" EntitySet="FeatureTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductTr__Produ__619B8048" Association="Self.FK__ProductTr__Produ__619B8048">
+            <End Role="TblProduct" EntitySet="TblProduct" />
+            <End Role="ProductTranslations" EntitySet="ProductTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceTr__Servi__4E88ABD4" Association="Self.FK__ServiceTr__Servi__4E88ABD4">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServiceTranslations" EntitySet="ServiceTranslations" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblProduct_TblCategory" Association="Self.FK_TblProduct_TblCategory">
             <End Role="TblCategory" EntitySet="TblCategory" />
             <End Role="TblProduct" EntitySet="TblProduct" />
@@ -160,6 +474,7 @@
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblProduct" Relationship="DayNightDbModel.FK_TblProduct_TblCategory" FromRole="TblCategory" ToRole="TblProduct" />
+          <NavigationProperty Name="CategoryTranslations" Relationship="DayNightDbModel.FK__CategoryT__Categ__5DCAEF64" FromRole="TblCategory" ToRole="CategoryTranslations" />
         </EntityType>
         <EntityType Name="TblProduct">
           <Key>
@@ -172,6 +487,7 @@
           <Property Name="ProductStatus" Type="Boolean" />
           <Property Name="CategoryId" Type="Int32" />
           <NavigationProperty Name="TblCategory" Relationship="DayNightDbModel.FK_TblProduct_TblCategory" FromRole="TblProduct" ToRole="TblCategory" />
+          <NavigationProperty Name="ProductTranslations" Relationship="DayNightDbModel.FK__ProductTr__Produ__619B8048" FromRole="TblProduct" ToRole="ProductTranslations" />
         </EntityType>
         <EntityContainer Name="DayNightDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TblCategory" EntityType="Self.TblCategory" />
@@ -189,6 +505,86 @@
           <EntitySet Name="Service" EntityType="DayNightDbModel.Service" />
           <EntitySet Name="CompanyStats" EntityType="DayNightDbModel.CompanyStats" />
           <EntitySet Name="About" EntityType="DayNightDbModel.About" />
+          <EntitySet Name="AboutTranslations" EntityType="DayNightDbModel.AboutTranslations" />
+          <EntitySet Name="CategoryTranslations" EntityType="DayNightDbModel.CategoryTranslations" />
+          <EntitySet Name="EmployeeTranslations" EntityType="DayNightDbModel.EmployeeTranslations" />
+          <EntitySet Name="FaqTranslations" EntityType="DayNightDbModel.FaqTranslations" />
+          <EntitySet Name="FeatureTranslations" EntityType="DayNightDbModel.FeatureTranslations" />
+          <EntitySet Name="ProductTranslations" EntityType="DayNightDbModel.ProductTranslations" />
+          <EntitySet Name="ServiceTranslations" EntityType="DayNightDbModel.ServiceTranslations" />
+          <AssociationSet Name="FK__AboutTran__About__4AB81AF0" Association="DayNightDbModel.FK__AboutTran__About__4AB81AF0">
+            <End Role="About" EntitySet="About" />
+            <End Role="AboutTranslations" EntitySet="AboutTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CategoryT__Categ__5DCAEF64" Association="DayNightDbModel.FK__CategoryT__Categ__5DCAEF64">
+            <End Role="TblCategory" EntitySet="TblCategory" />
+            <End Role="CategoryTranslations" EntitySet="CategoryTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeT__Emplo__52593CB8" Association="DayNightDbModel.FK__EmployeeT__Emplo__52593CB8">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeTranslations" EntitySet="EmployeeTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FaqTransl__FaqId__5629CD9C" Association="DayNightDbModel.FK__FaqTransl__FaqId__5629CD9C">
+            <End Role="Faq" EntitySet="Faq" />
+            <End Role="FaqTranslations" EntitySet="FaqTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FeatureTr__Featu__59FA5E80" Association="DayNightDbModel.FK__FeatureTr__Featu__59FA5E80">
+            <End Role="Feature" EntitySet="Feature" />
+            <End Role="FeatureTranslations" EntitySet="FeatureTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductTr__Produ__619B8048" Association="DayNightDbModel.FK__ProductTr__Produ__619B8048">
+            <End Role="TblProduct" EntitySet="TblProduct" />
+            <End Role="ProductTranslations" EntitySet="ProductTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceTr__Servi__4E88ABD4" Association="DayNightDbModel.FK__ServiceTr__Servi__4E88ABD4">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServiceTranslations" EntitySet="ServiceTranslations" />
+          </AssociationSet>
+          <EntitySet Name="CompanyStatsTranslations" EntityType="DayNightDbModel.CompanyStatsTranslations" />
+          <EntitySet Name="ContactTranslations" EntityType="DayNightDbModel.ContactTranslations" />
+          <EntitySet Name="CrauselTranslations" EntityType="DayNightDbModel.CrauselTranslations" />
+          <AssociationSet Name="FK__CompanySt__StatI__6D0D32F4" Association="DayNightDbModel.FK__CompanySt__StatI__6D0D32F4">
+            <End Role="CompanyStats" EntitySet="CompanyStats" />
+            <End Role="CompanyStatsTranslations" EntitySet="CompanyStatsTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactTr__Conta__75A278F5" Association="DayNightDbModel.FK__ContactTr__Conta__75A278F5">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="ContactTranslations" EntitySet="ContactTranslations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CrauselTr__Craus__70DDC3D8" Association="DayNightDbModel.FK__CrauselTr__Craus__70DDC3D8">
+            <End Role="Crausel" EntitySet="Crausel" />
+            <End Role="CrauselTranslations" EntitySet="CrauselTranslations" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DayNightDbModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DayNightDbModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -225,6 +621,7 @@
           <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ContactTranslations" Relationship="DayNightDbModel.FK__ContactTr__Conta__75A278F5" FromRole="Contact" ToRole="ContactTranslations" />
         </EntityType>
         <EntityType Name="Crausel">
           <Key>
@@ -234,6 +631,7 @@
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CrauselTranslations" Relationship="DayNightDbModel.FK__CrauselTr__Craus__70DDC3D8" FromRole="Crausel" ToRole="CrauselTranslations" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -245,6 +643,7 @@
           <Property Name="ImageUrl" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="NameSurname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Job" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeTranslations" Relationship="DayNightDbModel.FK__EmployeeT__Emplo__52593CB8" FromRole="Employee" ToRole="EmployeeTranslations" />
         </EntityType>
         <EntityType Name="Faq">
           <Key>
@@ -255,6 +654,7 @@
           <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FaqTranslations" Relationship="DayNightDbModel.FK__FaqTransl__FaqId__5629CD9C" FromRole="Faq" ToRole="FaqTranslations" />
         </EntityType>
         <EntityType Name="Feature">
           <Key>
@@ -264,6 +664,7 @@
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ImageUrl" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FeatureTranslations" Relationship="DayNightDbModel.FK__FeatureTr__Featu__59FA5E80" FromRole="Feature" ToRole="FeatureTranslations" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -275,6 +676,7 @@
           <Property Name="CardTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CardDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CardImageUrl" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ServiceTranslations" Relationship="DayNightDbModel.FK__ServiceTr__Servi__4E88ABD4" FromRole="Service" ToRole="ServiceTranslations" />
         </EntityType>
         <EntityType Name="CompanyStats">
           <Key>
@@ -285,6 +687,7 @@
           <Property Name="Value" Type="Int32" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="DisplayOrder" Type="Int32" />
+          <NavigationProperty Name="CompanyStatsTranslations" Relationship="DayNightDbModel.FK__CompanySt__StatI__6D0D32F4" FromRole="CompanyStats" ToRole="CompanyStatsTranslations" />
         </EntityType>
         <EntityType Name="About">
           <Key>
@@ -298,7 +701,262 @@
           <Property Name="BulletPoint2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BulletPoint3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ButtonText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AboutTranslations" Relationship="DayNightDbModel.FK__AboutTran__About__4AB81AF0" FromRole="About" ToRole="AboutTranslations" />
         </EntityType>
+        <EntityType Name="AboutTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Subtitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BulletPoint1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BulletPoint2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BulletPoint3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ButtonText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="About" Relationship="DayNightDbModel.FK__AboutTran__About__4AB81AF0" FromRole="AboutTranslations" ToRole="About" />
+        </EntityType>
+        <EntityType Name="CategoryTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblCategory" Relationship="DayNightDbModel.FK__CategoryT__Categ__5DCAEF64" FromRole="CategoryTranslations" ToRole="TblCategory" />
+        </EntityType>
+        <EntityType Name="EmployeeTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NameSurname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Job" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="DayNightDbModel.FK__EmployeeT__Emplo__52593CB8" FromRole="EmployeeTranslations" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="FaqTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FaqId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Faq" Relationship="DayNightDbModel.FK__FaqTransl__FaqId__5629CD9C" FromRole="FaqTranslations" ToRole="Faq" />
+        </EntityType>
+        <EntityType Name="FeatureTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeatureId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Feature" Relationship="DayNightDbModel.FK__FeatureTr__Featu__59FA5E80" FromRole="FeatureTranslations" ToRole="Feature" />
+        </EntityType>
+        <EntityType Name="ProductTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblProduct" Relationship="DayNightDbModel.FK__ProductTr__Produ__619B8048" FromRole="ProductTranslations" ToRole="TblProduct" />
+        </EntityType>
+        <EntityType Name="ServiceTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CardTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CardDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Service" Relationship="DayNightDbModel.FK__ServiceTr__Servi__4E88ABD4" FromRole="ServiceTranslations" ToRole="Service" />
+        </EntityType>
+        <Association Name="FK__AboutTran__About__4AB81AF0">
+          <End Type="DayNightDbModel.About" Role="About" Multiplicity="1" />
+          <End Type="DayNightDbModel.AboutTranslations" Role="AboutTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="About">
+              <PropertyRef Name="AboutId" />
+            </Principal>
+            <Dependent Role="AboutTranslations">
+              <PropertyRef Name="AboutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CategoryT__Categ__5DCAEF64">
+          <End Type="DayNightDbModel.TblCategory" Role="TblCategory" Multiplicity="1" />
+          <End Type="DayNightDbModel.CategoryTranslations" Role="CategoryTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CategoryTranslations">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeT__Emplo__52593CB8">
+          <End Type="DayNightDbModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DayNightDbModel.EmployeeTranslations" Role="EmployeeTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="EmployeeTranslations">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FaqTransl__FaqId__5629CD9C">
+          <End Type="DayNightDbModel.Faq" Role="Faq" Multiplicity="1" />
+          <End Type="DayNightDbModel.FaqTranslations" Role="FaqTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faq">
+              <PropertyRef Name="FaqId" />
+            </Principal>
+            <Dependent Role="FaqTranslations">
+              <PropertyRef Name="FaqId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FeatureTr__Featu__59FA5E80">
+          <End Type="DayNightDbModel.Feature" Role="Feature" Multiplicity="1" />
+          <End Type="DayNightDbModel.FeatureTranslations" Role="FeatureTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feature">
+              <PropertyRef Name="FeatureId" />
+            </Principal>
+            <Dependent Role="FeatureTranslations">
+              <PropertyRef Name="FeatureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductTr__Produ__619B8048">
+          <End Type="DayNightDbModel.TblProduct" Role="TblProduct" Multiplicity="1" />
+          <End Type="DayNightDbModel.ProductTranslations" Role="ProductTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductTranslations">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceTr__Servi__4E88ABD4">
+          <End Type="DayNightDbModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="DayNightDbModel.ServiceTranslations" Role="ServiceTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ServiceTranslations">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CompanyStatsTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyStats" Relationship="DayNightDbModel.FK__CompanySt__StatI__6D0D32F4" FromRole="CompanyStatsTranslations" ToRole="CompanyStats" />
+        </EntityType>
+        <EntityType Name="ContactTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contact" Relationship="DayNightDbModel.FK__ContactTr__Conta__75A278F5" FromRole="ContactTranslations" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="CrauselTranslations">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CrauselId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ButtonText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Crausel" Relationship="DayNightDbModel.FK__CrauselTr__Craus__70DDC3D8" FromRole="CrauselTranslations" ToRole="Crausel" />
+        </EntityType>
+        <Association Name="FK__CompanySt__StatI__6D0D32F4">
+          <End Type="DayNightDbModel.CompanyStats" Role="CompanyStats" Multiplicity="1" />
+          <End Type="DayNightDbModel.CompanyStatsTranslations" Role="CompanyStatsTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyStats">
+              <PropertyRef Name="StatId" />
+            </Principal>
+            <Dependent Role="CompanyStatsTranslations">
+              <PropertyRef Name="StatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactTr__Conta__75A278F5">
+          <End Type="DayNightDbModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="DayNightDbModel.ContactTranslations" Role="ContactTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="ContactTranslations">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CrauselTr__Craus__70DDC3D8">
+          <End Type="DayNightDbModel.Crausel" Role="Crausel" Multiplicity="1" />
+          <End Type="DayNightDbModel.CrauselTranslations" Role="CrauselTranslations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Crausel">
+              <PropertyRef Name="CrauselId" />
+            </Principal>
+            <Dependent Role="CrauselTranslations">
+              <PropertyRef Name="CrauselId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -431,6 +1089,153 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AboutTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.AboutTranslations">
+              <MappingFragment StoreEntitySet="AboutTranslations">
+                <ScalarProperty Name="ButtonText" ColumnName="ButtonText" />
+                <ScalarProperty Name="BulletPoint3" ColumnName="BulletPoint3" />
+                <ScalarProperty Name="BulletPoint2" ColumnName="BulletPoint2" />
+                <ScalarProperty Name="BulletPoint1" ColumnName="BulletPoint1" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.CategoryTranslations">
+              <MappingFragment StoreEntitySet="CategoryTranslations">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.EmployeeTranslations">
+              <MappingFragment StoreEntitySet="EmployeeTranslations">
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FaqTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.FaqTranslations">
+              <MappingFragment StoreEntitySet="FaqTranslations">
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="FaqId" ColumnName="FaqId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeatureTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.FeatureTranslations">
+              <MappingFragment StoreEntitySet="FeatureTranslations">
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.ProductTranslations">
+              <MappingFragment StoreEntitySet="ProductTranslations">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.ServiceTranslations">
+              <MappingFragment StoreEntitySet="ServiceTranslations">
+                <ScalarProperty Name="CardDescription" ColumnName="CardDescription" />
+                <ScalarProperty Name="CardTitle" ColumnName="CardTitle" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyStatsTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.CompanyStatsTranslations">
+              <MappingFragment StoreEntitySet="CompanyStatsTranslations">
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="StatId" ColumnName="StatId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.ContactTranslations">
+              <MappingFragment StoreEntitySet="ContactTranslations">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CrauselTranslations">
+            <EntityTypeMapping TypeName="DayNightDbModel.CrauselTranslations">
+              <MappingFragment StoreEntitySet="CrauselTranslations">
+                <ScalarProperty Name="ButtonText" ColumnName="ButtonText" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+                <ScalarProperty Name="CrauselId" ColumnName="CrauselId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DayNightDbModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DayNightDbModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DayNightDbModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DayNightDbModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DayNightDbModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DayNightDbModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DayNightDbModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DayNightDbModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DayNightDbModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

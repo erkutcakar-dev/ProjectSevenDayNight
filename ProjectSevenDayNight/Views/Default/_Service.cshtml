@@ -24,9 +24,9 @@
                         </div>
                         <div class="service-content p-3">
                             <div class="service-content-inner">
-                                <a href="#" class="d-inline-block h5 mb-2">@item.CardTitle</a>
-                                <p class="mb-3">@item.CardDescription</p>
-                                <a class="btn btn-primary rounded-pill py-2 px-3" href="#">Read More</a>
+                                <a href="#" class="d-inline-block h5 mb-2">@item.T("CardTitle")</a>
+                                <p class="mb-3">@item.T("CardDescription")</p>
+                                <a class="btn btn-primary rounded-pill py-2 px-3" href="#">@SimpleResourceHelper.GetString("LearnMore")</a>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="col-12 text-center wow fadeInUp mt-5" data-wow-delay="0.2s">
-            <a class="btn btn-primary rounded-pill py-3 px-5" href="#">More Services</a>
+            <a class="btn btn-primary rounded-pill py-3 px-5" href="#">@SimpleLanguageHelper.Translate("More Services")</a>
         </div>
     </div>
 </div>
