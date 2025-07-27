@@ -47,10 +47,10 @@ namespace ProjectSevenDayNight.Controllers
         }
         
         /// <summary>
-        /// HuggingFace API kullanarak görsel oluşturur
+        /// HuggingFace API kullanarak görsel oluşturur ve dosya olarak kaydeder
         /// </summary>
         /// <param name="prompt">Görsel açıklaması</param>
-        /// <returns>Base64 formatında görsel verisi</returns>
+        /// <returns>Dosya yolu ve görsel verisi</returns>
         [HttpPost]
         public async Task<JsonResult> GenerateImage(string prompt)
         {
@@ -90,14 +90,26 @@ namespace ProjectSevenDayNight.Controllers
                         // Görsel verisini al
                         var imageBytes = await response.Content.ReadAsByteArrayAsync();
                         
-                        // Base64 formatına çevir
+                        // Dosya adı oluştur
+                        var fileName = $"{Guid.NewGuid()}.png";
+                        var relativePath = $"/Content/AiImages/{fileName}";
+                        var serverPath = Server.MapPath(relativePath);
+                        
+                        // Klasörü oluştur (yoksa)
+                        Directory.CreateDirectory(Path.GetDirectoryName(serverPath));
+                        
+                        // Dosyayı kaydet
+                        System.IO.File.WriteAllBytes(serverPath, imageBytes);
+                        
+                        // Base64 formatına da çevir (UI'da göstermek için)
                         var base64Image = Convert.ToBase64String(imageBytes);
                         var imageDataUrl = $"data:image/png;base64,{base64Image}";
 
                         return Json(new { 
                             success = true, 
                             imageData = imageDataUrl,
-                            message = "Image generated successfully!"
+                            imagePath = relativePath,
+                            message = "Image generated and saved successfully!"
                         });
                     }
                     else
@@ -140,22 +152,72 @@ namespace ProjectSevenDayNight.Controllers
         [HttpPost]
         public ActionResult UpdateService(Service service)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(service);
-            }
+            // ModelState validation'ı geçici olarak devre dışı bırak
+            // if (!ModelState.IsValid)
+            // {
+            //     return View(service);
+            // }
 
             var value = db.Service.Find(service.ServiceId);
             if (value == null)
                 return HttpNotFound();
 
+            // Debug: Gelen verileri logla
+            System.Diagnostics.Debug.WriteLine($"Incoming Service Data:");
+            System.Diagnostics.Debug.WriteLine($"ServiceId: {service.ServiceId}");
+            System.Diagnostics.Debug.WriteLine($"Title: {service.Title}");
+            System.Diagnostics.Debug.WriteLine($"Subtitle: {service.Subtitle}");
+            System.Diagnostics.Debug.WriteLine($"CardTitle: {service.CardTitle}");
+            System.Diagnostics.Debug.WriteLine($"CardDescription: {service.CardDescription}");
+            System.Diagnostics.Debug.WriteLine($"CardImageUrl: {service.CardImageUrl}");
+
             value.Title = service.Title;
             value.Subtitle = service.Subtitle;
             value.CardTitle = service.CardTitle;
             value.CardDescription = service.CardDescription;
+            
+            // CardImageUrl'i güncelle
             value.CardImageUrl = service.CardImageUrl;
 
-            db.SaveChanges();
+            // Debug: Kaydedilecek verileri logla
+            System.Diagnostics.Debug.WriteLine($"Saving Service Data:");
+            System.Diagnostics.Debug.WriteLine($"ServiceId: {value.ServiceId}");
+            System.Diagnostics.Debug.WriteLine($"Title: {value.Title}");
+            System.Diagnostics.Debug.WriteLine($"Subtitle: {value.Subtitle}");
+            System.Diagnostics.Debug.WriteLine($"CardTitle: {value.CardTitle}");
+            System.Diagnostics.Debug.WriteLine($"CardDescription: {value.CardDescription}");
+            System.Diagnostics.Debug.WriteLine($"CardImageUrl: {value.CardImageUrl}");
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                // Validation hatalarını detaylı logla
+                System.Diagnostics.Debug.WriteLine("=== VALIDATION ERRORS ===");
+                foreach (var eve in ex.EntityValidationErrors)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Entity: {eve.Entry.Entity.GetType().Name}, State: {eve.Entry.State}");
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Property: {ve.PropertyName}, Error: {ve.ErrorMessage}");
+                    }
+                }
+                
+                // Hata mesajını kullanıcıya göster
+                var errorMessage = "Validation errors occurred: ";
+                foreach (var eve in ex.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        errorMessage += $"{ve.PropertyName}: {ve.ErrorMessage}; ";
+                    }
+                }
+                
+                ModelState.AddModelError("", errorMessage);
+                return View(service);
+            }
             
             // Otomatik çeviri güncelle
             AutoTranslationHelper.AddAutoTranslation(value, "Title", service.Title);

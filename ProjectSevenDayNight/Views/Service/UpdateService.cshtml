@@ -35,18 +35,13 @@
         @Html.ValidationMessageFor(m => m.CardDescription, "", new { @class = "text-danger" })
     </div>
 
-    <!-- Mevcut Görsel Gösterimi -->
-    @if (!string.IsNullOrEmpty(Model.CardImageUrl))
-    {
-        <div class="mb-3">
-            <label class="form-label">Current Image</label>
-            <div class="border rounded p-3">
-                <img src="@Model.CardImageUrl" class="img-fluid" style="max-width: 512px; max-height: 512px;" />
-            </div>
+    <div class="mb-3" id="currentImageSection" style="display: none;">
+        <label class="form-label">Current Image</label>
+        <div class="border rounded p-3">
+            <img id="currentImage" class="img-fluid" style="max-width: 512px; max-height: 512px;" />
         </div>
-    }
+    </div>
     
-    <!-- Görsel Oluşturma Bölümü -->
     <div class="mb-3">
         <label for="imagePrompt" class="form-label">New Image Description (Prompt)</label>
         <textarea id="imagePrompt" class="form-control" rows="3" placeholder="Describe the image you want to create..."></textarea>
@@ -63,7 +58,6 @@
         </div>
     </div>
     
-    <!-- Oluşturulan Görsel Gösterimi -->
     <div class="mb-3" id="imageResult" style="display: none;">
         <label class="form-label">Generated New Image</label>
         <div class="border rounded p-3">
@@ -81,7 +75,7 @@
 
     <div class="mb-3">
         <label class="form-label">Card Image URL</label>
-        @Html.TextBoxFor(m => m.CardImageUrl, new { @class = "form-control", id = "cardImageUrl", @readonly = "readonly" })
+        @Html.TextBoxFor(m => m.CardImageUrl, new { @class = "form-control", id = "cardImageUrl" })
         @Html.ValidationMessageFor(m => m.CardImageUrl, "", new { @class = "text-danger" })
         <small class="form-text text-muted">This will be automatically updated after generating an image.</small>
     </div>
@@ -96,24 +90,38 @@
     
     <script>
         $(document).ready(function () {
-            // Görsel oluşturma butonu tıklandığında
+            // Mevcut görsel varsa göster
+            var currentImageUrl = '@Model.CardImageUrl';
+            if (currentImageUrl && currentImageUrl.trim() !== '') {
+                $('#currentImage').attr('src', currentImageUrl);
+                $('#currentImageSection').show();
+            }
+            
             $('#generateImageBtn').click(function () {
                 generateImage();
             });
             
-            // Yeniden oluştur butonu tıklandığında
             $('#regenerateBtn').click(function () {
                 generateImage();
             });
             
-            // Bu görseli kullan butonu tıklandığında
             $('#useImageBtn').click(function () {
-                var imageData = $('#generatedImage').attr('src');
-                $('#cardImageUrl').val(imageData);
+                var imagePath = $('#generatedImage').data('path');
+                $('#cardImageUrl').val(imagePath);
                 showAlert('Image selected successfully!', 'success');
             });
             
-            // Görsel oluşturma fonksiyonu
+            $('form').submit(function (e) {
+                var cardImageUrl = $('#cardImageUrl').val();
+                console.log('Form submitting with CardImageUrl:', cardImageUrl);
+                
+                if (!cardImageUrl) {
+                    showAlert('Please select an image before updating!', 'warning');
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
             function generateImage() {
                 var prompt = $('#imagePrompt').val().trim();
                 
@@ -122,20 +130,18 @@
                     return;
                 }
                 
-                // Loading durumunu göster
                 $('#generateImageBtn').addClass('d-none');
                 $('#loadingSpinner').removeClass('d-none');
                 $('#imageResult').hide();
                 
-                // API çağrısı
                 $.ajax({
                     url: '/Service/GenerateImage',
                     type: 'POST',
                     data: { prompt: prompt },
                     success: function (response) {
                         if (response.success) {
-                            // Görseli göster
                             $('#generatedImage').attr('src', response.imageData);
+                            $('#generatedImage').data('path', response.imagePath);
                             $('#imageResult').show();
                             showAlert(response.message, 'success');
                         } else {
@@ -146,29 +152,21 @@
                         showAlert('Error generating image: ' + error, 'danger');
                     },
                     complete: function () {
-                        // Loading durumunu gizle
                         $('#generateImageBtn').removeClass('d-none');
                         $('#loadingSpinner').addClass('d-none');
                     }
                 });
             }
             
-            // Alert gösterme fonksiyonu
             function showAlert(message, type) {
-                var alertHtml = `
-                    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-                        ${message}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                `;
+                var alertHtml = '<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">' +
+                    message +
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>' +
+                    '</div>';
                 
-                // Mevcut alert'leri temizle
                 $('.alert').remove();
-                
-                // Yeni alert'i ekle
                 $('h3').after(alertHtml);
                 
-                // 5 saniye sonra otomatik kapat
                 setTimeout(function () {
                     $('.alert').fadeOut();
                 }, 5000);

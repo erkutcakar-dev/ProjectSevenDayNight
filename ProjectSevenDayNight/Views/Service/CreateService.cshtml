@@ -67,7 +67,7 @@
     
     <div class="mb-3">
         <label for="CardImageUrl" class="form-label">Card Image URL</label>
-        <input asp-for="CardImageUrl" id="cardImageUrl" class="form-control" readonly />
+        <input asp-for="CardImageUrl" id="cardImageUrl" class="form-control" />
         <span asp-validation-for="CardImageUrl" class="text-danger"></span>
         <small class="form-text text-muted">This will be automatically filled after generating an image.</small>
     </div>
@@ -94,9 +94,21 @@
             
             // Bu görseli kullan butonu tıklandığında
             $('#useImageBtn').click(function () {
-                var imageData = $('#generatedImage').attr('src');
-                $('#cardImageUrl').val(imageData);
+                var imagePath = $('#generatedImage').data('path');
+                $('#cardImageUrl').val(imagePath);
                 showAlert('Image successfully selected!', 'success');
+            });
+            
+            // Form submit kontrolü
+            $('form').submit(function (e) {
+                var cardImageUrl = $('#cardImageUrl').val();
+                console.log('Form submitting with CardImageUrl:', cardImageUrl);
+                
+                if (!cardImageUrl) {
+                    showAlert('Please select an image before saving!', 'warning');
+                    e.preventDefault();
+                    return false;
+                }
             });
             
             // Görsel oluşturma fonksiyonu
@@ -120,8 +132,9 @@
                     data: { prompt: prompt },
                     success: function (response) {
                         if (response.success) {
-                            // Görseli göster
+                            // Görseli göster ve dosya yolunu sakla
                             $('#generatedImage').attr('src', response.imageData);
+                            $('#generatedImage').data('path', response.imagePath);
                             $('#imageResult').show();
                             showAlert(response.message, 'success');
                         } else {
