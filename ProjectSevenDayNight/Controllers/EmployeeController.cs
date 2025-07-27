@@ -25,6 +25,13 @@ namespace ProjectSevenDayNight.Controllers
         {
             db.Employee.Add(employee);
             db.SaveChanges();
+            
+            // Otomatik Almanca çeviri ekle
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(employee, "Title", employee.Title);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(employee, "Subtitle", employee.Subtitle);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(employee, "NameSurname", employee.NameSurname);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(employee, "Job", employee.Job);
+            
             return RedirectToAction("EmployeeList");
         }
         
@@ -65,6 +72,13 @@ namespace ProjectSevenDayNight.Controllers
             value.Job = employee.Job;
 
             db.SaveChanges();
+
+            // Otomatik Almanca çeviri güncelle
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Title", value.Title);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Subtitle", value.Subtitle);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "NameSurname", value.NameSurname);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Job", value.Job);
+
             return RedirectToAction("EmployeeList");
         }
     }

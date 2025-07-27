@@ -31,10 +31,45 @@
         <textarea asp-for="CardDescription" class="form-control" rows="4"></textarea>
         <span asp-validation-for="CardDescription" class="text-danger"></span>
     </div>
+    
+    <!-- Görsel Oluşturma Bölümü -->
+    <div class="mb-3">
+        <label for="imagePrompt" class="form-label">Image Description (Prompt)</label>
+        <textarea id="imagePrompt" class="form-control" rows="3" placeholder="Describe the image you want to create..."></textarea>
+        <small class="form-text text-muted">Example: "Modern web design, blue tones, professional look"</small>
+    </div>
+    
+    <div class="mb-3">
+        <button type="button" id="generateImageBtn" class="btn btn-primary">
+            <i class="fas fa-magic"></i> Generate Image
+        </button>
+        <div id="loadingSpinner" class="d-none">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Generating image...
+        </div>
+    </div>
+    
+    <!-- Oluşturulan Görsel Gösterimi -->
+    <div class="mb-3" id="imageResult" style="display: none;">
+        <label class="form-label">Generated Image</label>
+        <div class="border rounded p-3">
+            <img id="generatedImage" class="img-fluid" style="max-width: 512px; max-height: 512px;" />
+            <div class="mt-2">
+                <button type="button" id="useImageBtn" class="btn btn-success btn-sm">
+                    <i class="fas fa-check"></i> Use This Image
+                </button>
+                <button type="button" id="regenerateBtn" class="btn btn-warning btn-sm ms-2">
+                    <i class="fas fa-redo"></i> Regenerate
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <div class="mb-3">
         <label for="CardImageUrl" class="form-label">Card Image URL</label>
-        <input asp-for="CardImageUrl" class="form-control" />
+        <input asp-for="CardImageUrl" id="cardImageUrl" class="form-control" readonly />
         <span asp-validation-for="CardImageUrl" class="text-danger"></span>
+        <small class="form-text text-muted">This will be automatically filled after generating an image.</small>
     </div>
 
     <button type="submit" class="btn btn-success">Save</button>
@@ -44,4 +79,86 @@
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            // Görsel oluşturma butonu tıklandığında
+            $('#generateImageBtn').click(function () {
+                generateImage();
+            });
+            
+            // Yeniden oluştur butonu tıklandığında
+            $('#regenerateBtn').click(function () {
+                generateImage();
+            });
+            
+            // Bu görseli kullan butonu tıklandığında
+            $('#useImageBtn').click(function () {
+                var imageData = $('#generatedImage').attr('src');
+                $('#cardImageUrl').val(imageData);
+                showAlert('Image successfully selected!', 'success');
+            });
+            
+            // Görsel oluşturma fonksiyonu
+            function generateImage() {
+                var prompt = $('#imagePrompt').val().trim();
+                
+                if (!prompt) {
+                    showAlert('Please enter an image description!', 'warning');
+                    return;
+                }
+                
+                // Loading durumunu göster
+                $('#generateImageBtn').addClass('d-none');
+                $('#loadingSpinner').removeClass('d-none');
+                $('#imageResult').hide();
+                
+                // API çağrısı
+                $.ajax({
+                    url: '/Service/GenerateImage',
+                    type: 'POST',
+                    data: { prompt: prompt },
+                    success: function (response) {
+                        if (response.success) {
+                            // Görseli göster
+                            $('#generatedImage').attr('src', response.imageData);
+                            $('#imageResult').show();
+                            showAlert(response.message, 'success');
+                        } else {
+                            showAlert(response.message, 'danger');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        showAlert('Error generating image: ' + error, 'danger');
+                    },
+                    complete: function () {
+                        // Loading durumunu gizle
+                        $('#generateImageBtn').removeClass('d-none');
+                        $('#loadingSpinner').addClass('d-none');
+                    }
+                });
+            }
+            
+            // Alert gösterme fonksiyonu
+            function showAlert(message, type) {
+                var alertHtml = `
+                    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                        ${message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                // Mevcut alert'leri temizle
+                $('.alert').remove();
+                
+                // Yeni alert'i ekle
+                $('h3').after(alertHtml);
+                
+                // 5 saniye sonra otomatik kapat
+                setTimeout(function () {
+                    $('.alert').fadeOut();
+                }, 5000);
+            }
+        });
+    </script>
 } 

@@ -25,6 +25,13 @@ namespace ProjectSevenDayNight.Controllers
         {
             db.Faq.Add(faq);
             db.SaveChanges();
+            
+            // Otomatik Almanca çeviri ekle
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(faq, "Title", faq.Title);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(faq, "Subtitle", faq.Subtitle);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(faq, "Question", faq.Question);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(faq, "Answer", faq.Answer);
+            
             return RedirectToAction("FaqList");
         }
         
@@ -64,6 +71,13 @@ namespace ProjectSevenDayNight.Controllers
             value.Answer = faq.Answer;
 
             db.SaveChanges();
+
+            // Otomatik Almanca çeviri güncelle
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Title", value.Title);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Subtitle", value.Subtitle);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Question", value.Question);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Answer", value.Answer);
+
             return RedirectToAction("FaqList");
         }
     }

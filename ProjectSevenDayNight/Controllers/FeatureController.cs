@@ -25,6 +25,11 @@ namespace ProjectSevenDayNight.Controllers
         {
             db.Feature.Add(feature);
             db.SaveChanges();
+            
+            // Otomatik Almanca çeviri ekle
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(feature, "Title", feature.Title);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(feature, "Subtitle", feature.Subtitle);
+            
             return RedirectToAction("FeatureList");
         }
         
@@ -63,6 +68,11 @@ namespace ProjectSevenDayNight.Controllers
             value.ImageUrl = feature.ImageUrl;
 
             db.SaveChanges();
+
+            // Otomatik Almanca çeviri güncelle
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Title", value.Title);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Subtitle", value.Subtitle);
+
             return RedirectToAction("FeatureList");
         }
     }

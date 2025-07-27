@@ -25,6 +25,13 @@ namespace ProjectSevenDayNight.Controllers
         {
             db.Contact.Add(contact);
             db.SaveChanges();
+            
+            // Otomatik Almanca çeviri ekle
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(contact, "Title", contact.Title);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(contact, "Subtitle", contact.Subtitle);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(contact, "Description", contact.Description);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(contact, "Address", contact.Address);
+            
             return RedirectToAction("ContactList");
         }
         
@@ -65,9 +72,15 @@ namespace ProjectSevenDayNight.Controllers
             value.SocialMediaImageUrl = contact.SocialMediaImageUrl;
             value.Address = contact.Address;
             value.Mail = contact.Mail;
-            value.Telephone = contact.Telephone;
 
             db.SaveChanges();
+
+            // Otomatik Almanca çeviri güncelle
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Title", value.Title);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Subtitle", value.Subtitle);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Description", value.Description);
+            ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(value, "Address", value.Address);
+
             return RedirectToAction("ContactList");
         }
     }

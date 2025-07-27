@@ -2,12 +2,22 @@ using System.Linq;
 using System.Web.Mvc;
 using ProjectSevenDayNight.Models.DataModels;
 using ProjectSevenDayNight.Helpers;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Text;
+using Newtonsoft.Json;
+using System.IO;
+using System;
 
 namespace ProjectSevenDayNight.Controllers
 {
     public class ServiceController : Controller
     {
         DayNightDbEntities db = new DayNightDbEntities();
+        
+        // HuggingFace API bilgileri
+        private const string HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-dev";
+        private const string API_KEY = "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";
         
         public ActionResult ServiceList()
         {
@@ -34,6 +44,79 @@ namespace ProjectSevenDayNight.Controllers
             AutoTranslationHelper.AddAutoTranslation(service, "CardDescription", service.CardDescription);
             
             return RedirectToAction("ServiceList");
+        }
+        
+        /// <summary>
+        /// HuggingFace API kullanarak görsel oluşturur
+        /// </summary>
+        /// <param name="prompt">Görsel açıklaması</param>
+        /// <returns>Base64 formatında görsel verisi</returns>
+        [HttpPost]
+        public async Task<JsonResult> GenerateImage(string prompt)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(prompt))
+                {
+                    return Json(new { success = false, message = "Prompt field cannot be empty!" });
+                }
+
+                using (var httpClient = new HttpClient())
+                {
+                    // API key'i header'a ekle
+                    httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {API_KEY}");
+                    
+                    // API isteği için JSON verisi hazırla
+                    var requestData = new
+                    {
+                        inputs = prompt,
+                        parameters = new
+                        {
+                            num_inference_steps = 25,
+                            guidance_scale = 7.5,
+                            width = 512,
+                            height = 512
+                        }
+                    };
+
+                    var jsonContent = JsonConvert.SerializeObject(requestData);
+                    var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                    // API çağrısı yap
+                    var response = await httpClient.PostAsync(HUGGINGFACE_API_URL, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Görsel verisini al
+                        var imageBytes = await response.Content.ReadAsByteArrayAsync();
+                        
+                        // Base64 formatına çevir
+                        var base64Image = Convert.ToBase64String(imageBytes);
+                        var imageDataUrl = $"data:image/png;base64,{base64Image}";
+
+                        return Json(new { 
+                            success = true, 
+                            imageData = imageDataUrl,
+                            message = "Image generated successfully!"
+                        });
+                    }
+                    else
+                    {
+                        var errorContent = await response.Content.ReadAsStringAsync();
+                        return Json(new { 
+                            success = false, 
+                            message = $"API Error: {response.StatusCode} - {errorContent}" 
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { 
+                    success = false, 
+                    message = $"An error occurred: {ex.Message}" 
+                });
+            }
         }
         
         public ActionResult DeleteService(int id)
