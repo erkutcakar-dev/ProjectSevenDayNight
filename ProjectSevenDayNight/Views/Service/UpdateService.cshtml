@@ -12,165 +12,40 @@
     @Html.HiddenFor(m => m.ServiceId)
 
     <div class="mb-3">
-        <label class="form-label">Title</label>
+        <label class="form-label">Başlık</label>
         @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Subtitle</label>
+        <label class="form-label">Alt Başlık</label>
         @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Subtitle, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Card Title</label>
+        <label class="form-label">Kart Başlığı</label>
         @Html.TextBoxFor(m => m.CardTitle, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.CardTitle, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Card Description</label>
+        <label class="form-label">Kart Açıklaması</label>
         @Html.TextAreaFor(m => m.CardDescription, new { @class = "form-control", rows = "5" })
         @Html.ValidationMessageFor(m => m.CardDescription, "", new { @class = "text-danger" })
     </div>
 
-    <div class="mb-3" id="currentImageSection" style="display: none;">
-        <label class="form-label">Current Image</label>
-        <div class="border rounded p-3">
-            <img id="currentImage" class="img-fluid" style="max-width: 512px; max-height: 512px;" />
-        </div>
-    </div>
-    
     <div class="mb-3">
-        <label for="imagePrompt" class="form-label">New Image Description (Prompt)</label>
-        <textarea id="imagePrompt" class="form-control" rows="3" placeholder="Describe the image you want to create..."></textarea>
-        <small class="form-text text-muted">Example: "Modern web design, blue tones, professional look"</small>
-    </div>
-    
-    <div class="mb-3">
-        <button type="button" id="generateImageBtn" class="btn btn-primary">
-            <i class="fas fa-magic"></i> Generate New Image
-        </button>
-        <div id="loadingSpinner" class="d-none">
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            Generating image...
-        </div>
-    </div>
-    
-    <div class="mb-3" id="imageResult" style="display: none;">
-        <label class="form-label">Generated New Image</label>
-        <div class="border rounded p-3">
-            <img id="generatedImage" class="img-fluid" style="max-width: 512px; max-height: 512px;" />
-            <div class="mt-2">
-                <button type="button" id="useImageBtn" class="btn btn-success btn-sm">
-                    <i class="fas fa-check"></i> Use This Image
-                </button>
-                <button type="button" id="regenerateBtn" class="btn btn-warning btn-sm ms-2">
-                    <i class="fas fa-redo"></i> Regenerate
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Card Image URL</label>
-        @Html.TextBoxFor(m => m.CardImageUrl, new { @class = "form-control", id = "cardImageUrl" })
+        <label class="form-label">Kart Resim URL</label>
+        @Html.TextBoxFor(m => m.CardImageUrl, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.CardImageUrl, "", new { @class = "text-danger" })
-        <small class="form-text text-muted">This will be automatically updated after generating an image.</small>
     </div>
 
-    <button type="submit" class="btn btn-primary">Update</button>
-    <a href="/Service/ServiceList" class="btn btn-secondary ms-2">Cancel</a>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a href="/Service/ServiceList" class="btn btn-secondary ms-2">İptal</a>
 }
 
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
-    
-    <script>
-        $(document).ready(function () {
-            // Mevcut görsel varsa göster
-            var currentImageUrl = '@Model.CardImageUrl';
-            if (currentImageUrl && currentImageUrl.trim() !== '') {
-                $('#currentImage').attr('src', currentImageUrl);
-                $('#currentImageSection').show();
-            }
-            
-            $('#generateImageBtn').click(function () {
-                generateImage();
-            });
-            
-            $('#regenerateBtn').click(function () {
-                generateImage();
-            });
-            
-            $('#useImageBtn').click(function () {
-                var imagePath = $('#generatedImage').data('path');
-                $('#cardImageUrl').val(imagePath);
-                showAlert('Image selected successfully!', 'success');
-            });
-            
-            $('form').submit(function (e) {
-                var cardImageUrl = $('#cardImageUrl').val();
-                console.log('Form submitting with CardImageUrl:', cardImageUrl);
-                
-                if (!cardImageUrl) {
-                    showAlert('Please select an image before updating!', 'warning');
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            
-            function generateImage() {
-                var prompt = $('#imagePrompt').val().trim();
-                
-                if (!prompt) {
-                    showAlert('Please enter an image description!', 'warning');
-                    return;
-                }
-                
-                $('#generateImageBtn').addClass('d-none');
-                $('#loadingSpinner').removeClass('d-none');
-                $('#imageResult').hide();
-                
-                $.ajax({
-                    url: '/Service/GenerateImage',
-                    type: 'POST',
-                    data: { prompt: prompt },
-                    success: function (response) {
-                        if (response.success) {
-                            $('#generatedImage').attr('src', response.imageData);
-                            $('#generatedImage').data('path', response.imagePath);
-                            $('#imageResult').show();
-                            showAlert(response.message, 'success');
-                        } else {
-                            showAlert(response.message, 'danger');
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        showAlert('Error generating image: ' + error, 'danger');
-                    },
-                    complete: function () {
-                        $('#generateImageBtn').removeClass('d-none');
-                        $('#loadingSpinner').addClass('d-none');
-                    }
-                });
-            }
-            
-            function showAlert(message, type) {
-                var alertHtml = '<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">' +
-                    message +
-                    '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>' +
-                    '</div>';
-                
-                $('.alert').remove();
-                $('h3').after(alertHtml);
-                
-                setTimeout(function () {
-                    $('.alert').fadeOut();
-                }, 5000);
-            }
-        });
-    </script>
 } 

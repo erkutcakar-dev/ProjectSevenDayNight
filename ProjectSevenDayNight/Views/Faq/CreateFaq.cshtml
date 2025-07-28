@@ -1,6 +1,6 @@
 @model ProjectSevenDayNight.Models.DataModels.Faq
 @{
-    ViewBag.Title = "CreateFaq";
+    ViewBag.Title = "Create FAQ";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -8,35 +8,147 @@
 <br>
 <br>
 
-<h3>Add FAQ</h3>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Add FAQ</h4>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("CreateFaq", "Faq", FormMethod.Post, new { @class = "mt-4" }))
+            {
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Subtitle</label>
+                            @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Subtitle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-<form asp-action="CreateFaq" method="post">
-    <div class="mb-3">
-        <label for="Title" class="form-label">Title</label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
-    <div class="mb-3">
-        <label for="Subtitle" class="form-label">Subtitle</label>
-        <input asp-for="Subtitle" class="form-control" />
-        <span asp-validation-for="Subtitle" class="text-danger"></span>
-    </div>
-    <div class="mb-3">
-        <label for="Question" class="form-label">Question</label>
-        <textarea asp-for="Question" class="form-control" rows="4"></textarea>
-        <span asp-validation-for="Question" class="text-danger"></span>
-    </div>
-    <div class="mb-3">
-        <label for="Answer" class="form-label">Answer</label>
-        <textarea asp-for="Answer" class="form-control" rows="4"></textarea>
-        <span asp-validation-for="Answer" class="text-danger"></span>
-    </div>
+                <div class="mb-3">
+                    <label class="form-label">Question</label>
+                    <div class="input-group">
+                        @Html.TextAreaFor(m => m.Question, new { @class = "form-control", rows = "3", id = "questionText" })
+                        <button type="button" class="btn btn-info" id="generateQuestionBtn">
+                            <i class="fa fa-magic"></i> Generate Question
+                        </button>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Question, "", new { @class = "text-danger" })
+                </div>
 
-    <button type="submit" class="btn btn-success">Save</button>
-    <a href="/Faq/FaqList" class="btn btn-secondary ms-2">Ingore</a>
-</form>
+                <div class="mb-3">
+                    <label class="form-label">Answer</label>
+                    <div class="input-group">
+                        @Html.TextAreaFor(m => m.Answer, new { @class = "form-control", rows = "5", id = "answerText" })
+                        <button type="button" class="btn btn-success" id="generateAnswerBtn">
+                            <i class="fa fa-lightbulb"></i> Generate Answer
+                        </button>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Answer, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+                    <a href="/Faq/FaqList" class="btn btn-secondary">
+                        <i class="fa fa-times"></i> Cancel
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            // Generate question button
+            $('#generateQuestionBtn').click(function () {
+                var btn = $(this);
+                var originalText = btn.html();
+                
+                btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Generating...');
+                
+                $.ajax({
+                    url: '/Faq/GenerateQuestion',
+                    type: 'POST',
+                    success: function (response) {
+                        if (response.success) {
+                            $('#questionText').val(response.question);
+                            $('#answerText').val(response.answer);
+                            showAlert('Question and answer generated successfully!', 'success');
+                        } else {
+                            showAlert('Error: ' + response.message, 'danger');
+                        }
+                    },
+                    error: function () {
+                        showAlert('API connection error!', 'danger');
+                    },
+                    complete: function () {
+                        btn.prop('disabled', false).html(originalText);
+                    }
+                });
+            });
+
+            // Generate answer button
+            $('#generateAnswerBtn').click(function () {
+                var question = $('#questionText').val().trim();
+                if (!question) {
+                    showAlert('Please enter a question first!', 'warning');
+                    return;
+                }
+
+                var btn = $(this);
+                var originalText = btn.html();
+                
+                btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Generating...');
+                
+                $.ajax({
+                    url: '/Faq/GenerateAnswer',
+                    type: 'POST',
+                    data: { question: question },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#answerText').val(response.answer);
+                            showAlert('Answer generated successfully!', 'success');
+                        } else {
+                            showAlert('Error: ' + response.message, 'danger');
+                        }
+                    },
+                    error: function () {
+                        showAlert('API connection error!', 'danger');
+                    },
+                    complete: function () {
+                        btn.prop('disabled', false).html(originalText);
+                    }
+                });
+            });
+
+            function showAlert(message, type) {
+                var alertHtml = '<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">' +
+                    message +
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>' +
+                    '</div>';
+                
+                $('.card-body').prepend(alertHtml);
+                
+                // Auto close after 5 seconds
+                setTimeout(function () {
+                    $('.alert').alert('close');
+                }, 5000);
+            }
+        });
+    </script>
 } 

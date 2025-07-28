@@ -1,6 +1,12 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using ProjectSevenDayNight.Models.DataModels;
+using Newtonsoft.Json.Linq;
 
 namespace ProjectSevenDayNight.Controllers
 {
@@ -33,6 +39,244 @@ namespace ProjectSevenDayNight.Controllers
             ProjectSevenDayNight.Helpers.AutoTranslationHelper.AddAutoTranslation(faq, "Answer", faq.Answer);
             
             return RedirectToAction("FaqList");
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> GenerateQuestion()
+        {
+            try
+            {
+                var result = await GenerateChatGPTFAQs("general business and technology");
+                if (result.faqs != null && result.faqs.Count > 0)
+                {
+                    var firstFaq = result.faqs[0];
+                    return Json(new { 
+                        success = true, 
+                        question = firstFaq.question, 
+                        answer = firstFaq.answer 
+                    });
+                }
+                else
+                {
+                    return Json(new { 
+                        success = false, 
+                        message = "API'den yanıt alınamadı" 
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { 
+                    success = false, 
+                    message = ex.Message 
+                });
+            }
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> GenerateAnswer(string question)
+        {
+            try
+            {
+                var result = await GenerateChatGPTFAQs(question);
+                if (result.faqs != null && result.faqs.Count > 0)
+                {
+                    var firstFaq = result.faqs[0];
+                    return Json(new { 
+                        success = true, 
+                        answer = firstFaq.answer 
+                    });
+                }
+                else
+                {
+                    return Json(new { 
+                        success = false, 
+                        message = "API'den yanıt alınamadı" 
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { 
+                    success = false, 
+                    message = ex.Message 
+                });
+            }
+        }
+
+        [HttpPost]
+        public async Task<dynamic> GenerateChatGPTFAQs(string prompt)
+        {
+            string apiKey = "6f34f1fd84msh1928134c0765d35p1f3127jsn2dd4d98c36cb";
+            string apiUrl = "https://chatgpt-42.p.rapidapi.com/chatgpt";
+            
+            using (var client = new HttpClient())
+            {
+                var request = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Post,
+                    RequestUri = new Uri(apiUrl),
+                };
+                request.Headers.Add("x-rapidapi-key", apiKey);
+                request.Headers.Add("x-rapidapi-host", "chatgpt-42.p.rapidapi.com");
+                
+                // Daha spesifik prompt oluştur
+                var enhancedPrompt = $"Create exactly 3 FAQs about {prompt}. Format each FAQ as follows:\n\n1. Q: [Question]\nA: [Answer]\n\n2. Q: [Question]\nA: [Answer]\n\n3. Q: [Question]\nA: [Answer]";
+                
+                // Yeni format: messages array kullan
+                var requestBody = "{\"messages\":[{\"role\":\"user\",\"content\":\"" + enhancedPrompt.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n") + "\"}],\"web_access\":false}";
+                var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                request.Content = content;
+
+                var response = await client.SendAsync(request);
+                var json = await response.Content.ReadAsStringAsync();
+                
+                // Debug için JSON'u dosyaya yaz
+                try
+                {
+                    System.IO.File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/chatgpt_response.json"), json);
+                }
+                catch
+                {
+                    // App_Data klasörü yoksa hata vermesin
+                }
+                
+                if (response.IsSuccessStatusCode)
+                {
+                    var faqs = ExtractChatGPTFAQs(json);
+                    return new { faqs, raw = json };
+                }
+                else
+                {
+                    return new { faqs = new List<object>(), raw = json };
+                }
+            }
+        }
+
+        private List<object> ExtractChatGPTFAQs(string json)
+        {
+            try
+            {
+                var obj = JObject.Parse(json);
+                
+                var response = obj["response"]?.ToString() ?? 
+                              obj["message"]?.ToString() ?? 
+                              obj["content"]?.ToString() ?? 
+                              obj["text"]?.ToString() ?? 
+                              obj["result"]?.ToString();
+                
+                if (string.IsNullOrEmpty(response))
+                {
+                    try
+                    {
+                        System.IO.File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/chatgpt_parsed.txt"), "Response is null or empty. Full JSON: " + json);
+                    }
+                    catch
+                    {
+                        // App_Data klasörü yoksa hata vermesin
+                    }
+                    return new List<object>();
+                }
+
+                var faqs = new List<object>();
+                
+                var lines = response.Split('\n');
+                var currentQuestion = "";
+                var currentAnswer = "";
+                var questionNumber = 0;
+                
+                foreach (var line in lines)
+                {
+                    var trimmedLine = line.Trim();
+                    
+                    if (trimmedLine.StartsWith("Q:") || 
+                        trimmedLine.StartsWith("Question:") || 
+                        trimmedLine.StartsWith("1.") || 
+                        trimmedLine.StartsWith("2.") || 
+                        trimmedLine.StartsWith("3.") ||
+                        (trimmedLine.Length > 0 && char.IsDigit(trimmedLine[0]) && trimmedLine.Contains(".")))
+                    {
+                        if (!string.IsNullOrEmpty(currentQuestion) && !string.IsNullOrEmpty(currentAnswer))
+                        {
+                            faqs.Add(new { question = currentQuestion, answer = currentAnswer });
+                            questionNumber++;
+                        }
+                        
+                        currentQuestion = trimmedLine
+                            .Replace("Q:", "").Replace("Question:", "")
+                            .Replace("1.", "").Replace("2.", "").Replace("3.", "")
+                            .Trim();
+                        
+                        if (currentQuestion.Length <= 2 && char.IsDigit(currentQuestion[0]))
+                        {
+                            currentQuestion = "";
+                        }
+                        
+                        currentAnswer = "";
+                    }
+                    else if (trimmedLine.StartsWith("A:") || trimmedLine.StartsWith("Answer:"))
+                    {
+                        currentAnswer = trimmedLine.Replace("A:", "").Replace("Answer:", "").Trim();
+                    }
+                    else if (!string.IsNullOrEmpty(currentAnswer) && !string.IsNullOrEmpty(trimmedLine))
+                    {
+                        currentAnswer += " " + trimmedLine;
+                    }
+                    else if (!string.IsNullOrEmpty(currentQuestion) && string.IsNullOrEmpty(currentAnswer) && !string.IsNullOrEmpty(trimmedLine))
+                    {
+                        currentAnswer = trimmedLine;
+                    }
+                }
+                
+                if (!string.IsNullOrEmpty(currentQuestion) && !string.IsNullOrEmpty(currentAnswer))
+                {
+                    faqs.Add(new { question = currentQuestion, answer = currentAnswer });
+                }
+                
+                if (faqs.Count == 0)
+                {
+                    var parts = response.Split(new[] { "Q:", "Question:", "1.", "2.", "3." }, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < Math.Min(parts.Length, 3); i++)
+                    {
+                        var part = parts[i].Trim();
+                        var qaSplit = part.Split(new[] { "A:", "Answer:" }, StringSplitOptions.None);
+                        if (qaSplit.Length >= 2)
+                        {
+                            faqs.Add(new { 
+                                question = qaSplit[0].Trim(), 
+                                answer = qaSplit[1].Trim() 
+                            });
+                        }
+                    }
+                }
+                
+                while (faqs.Count < 3)
+                {
+                    faqs.Add(new { 
+                        question = "Sample Question " + (faqs.Count + 1), 
+                        answer = "Sample Answer " + (faqs.Count + 1) 
+                    });
+                }
+                
+                return faqs.Take(3).ToList();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    System.IO.File.WriteAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data/chatgpt_error.txt"), "Error: " + ex.Message + "\nJSON: " + json);
+                }
+                catch
+                {
+                    // App_Data klasörü yoksa hata vermesin
+                }
+                return new List<object>
+                {
+                    new { question = "What is this service?", answer = "This is a sample FAQ answer." },
+                    new { question = "How can I get help?", answer = "You can contact our support team." },
+                    new { question = "What are your business hours?", answer = "We are available 24/7." }
+                };
+            }
         }
         
         public ActionResult DeleteFaq(int id)
