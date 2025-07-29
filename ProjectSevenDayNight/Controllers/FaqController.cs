@@ -113,7 +113,7 @@ namespace ProjectSevenDayNight.Controllers
         [HttpPost]
         public async Task<dynamic> GenerateChatGPTFAQs(string prompt)
         {
-            string apiKey = "6f34f1fd84msh1928134c0765d35p1f3127jsn2dd4d98c36cb";
+            string apiKey = "";
             string apiUrl = "https://chatgpt-42.p.rapidapi.com/chatgpt";
             
             using (var client = new HttpClient())

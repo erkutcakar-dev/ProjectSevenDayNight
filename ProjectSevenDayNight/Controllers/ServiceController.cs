@@ -17,7 +17,7 @@ namespace ProjectSevenDayNight.Controllers
         
         // HuggingFace API bilgileri
         private const string HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-dev";
-        private const string API_KEY = "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";
+        private const string API_KEY = "api key";
         
         public ActionResult ServiceList()
         {
