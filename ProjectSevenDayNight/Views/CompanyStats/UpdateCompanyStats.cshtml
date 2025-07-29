@@ -12,31 +12,31 @@
     @Html.HiddenFor(m => m.StatId)
 
     <div class="mb-3">
-        <label class="form-label">Başlık</label>
+        <label class="form-label">Title</label>
         @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Değer</label>
+        <label class="form-label">Value</label>
         @Html.TextBoxFor(m => m.Value, new { @class = "form-control", type = "number" })
         @Html.ValidationMessageFor(m => m.Value, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Birim</label>
+        <label class="form-label">Unit</label>
         @Html.TextBoxFor(m => m.Unit, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Unit, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Görüntüleme Sırası</label>
+        <label class="form-label">Display Order</label>
         @Html.TextBoxFor(m => m.DisplayOrder, new { @class = "form-control", type = "number" })
         @Html.ValidationMessageFor(m => m.DisplayOrder, "", new { @class = "text-danger" })
     </div>
 
-    <button type="submit" class="btn btn-primary">Güncelle</button>
-    <a href="/CompanyStats/CompanyStatsList" class="btn btn-secondary ms-2">İptal</a>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="/CompanyStats/CompanyStatsList" class="btn btn-secondary ms-2">Cancel</a>
 }
 
 @section Scripts {

@@ -1,6 +1,8 @@
 using System.Linq;
 using System.Web.Mvc;
 using ProjectSevenDayNight.Models.DataModels;
+using System.IO;
+using System;
 
 namespace ProjectSevenDayNight.Controllers
 {
@@ -23,6 +25,26 @@ namespace ProjectSevenDayNight.Controllers
         [HttpPost]
         public ActionResult CreateEmployee(Employee employee)
         {
+            // Fotoğraf yükleme işlemi
+            if (Request.Files.Count > 0 && Request.Files["employeeImage"] != null)
+            {
+                var file = Request.Files["employeeImage"];
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(Server.MapPath("~/Content/EmployeeImages"), fileName);
+                    
+                    // Klasörü oluştur (yoksa)
+                    Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                    
+                    // Dosyayı kaydet
+                    file.SaveAs(filePath);
+                    
+                    // ImageUrl'i güncelle
+                    employee.ImageUrl = "/Content/EmployeeImages/" + fileName;
+                }
+            }
+            
             db.Employee.Add(employee);
             db.SaveChanges();
             
@@ -76,9 +98,33 @@ namespace ProjectSevenDayNight.Controllers
             if (value == null)
                 return HttpNotFound();
 
+            // Fotoğraf yükleme işlemi
+            if (Request.Files.Count > 0 && Request.Files["employeeImage"] != null)
+            {
+                var file = Request.Files["employeeImage"];
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(Server.MapPath("~/Content/EmployeeImages"), fileName);
+                    
+                    // Klasörü oluştur (yoksa)
+                    Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                    
+                    // Dosyayı kaydet
+                    file.SaveAs(filePath);
+                    
+                    // ImageUrl'i güncelle
+                    value.ImageUrl = "/Content/EmployeeImages/" + fileName;
+                }
+            }
+            else if (!string.IsNullOrEmpty(employee.ImageUrl))
+            {
+                // Eğer yeni fotoğraf yüklenmemişse ama URL girilmişse
+                value.ImageUrl = employee.ImageUrl;
+            }
+
             value.Title = employee.Title;
             value.Subtitle = employee.Subtitle;
-            value.ImageUrl = employee.ImageUrl;
             value.NameSurname = employee.NameSurname;
             value.Job = employee.Job;
 

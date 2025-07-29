@@ -7,7 +7,7 @@
 
 <h3>@ViewBag.Title</h3>
 
-@using (Html.BeginForm("UpdateEmployee", "Employee", FormMethod.Post, new { @class = "mt-4" }))
+@using (Html.BeginForm("UpdateEmployee", "Employee", FormMethod.Post, new { @class = "mt-4", enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(m => m.EmployeeId)
 
@@ -23,9 +23,16 @@
         @Html.ValidationMessageFor(m => m.Subtitle, "", new { @class = "text-danger" })
     </div>
 
+    <!-- Fotoğraf Yükleme Bölümü -->
     <div class="mb-3">
-        <label class="form-label">Image URL</label>
-        @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+        <label for="employeeImage" class="form-label">Employee Photo</label>
+        <input type="file" id="employeeImage" name="employeeImage" class="form-control" accept="image/*" />
+        <small class="form-text text-muted">Upload a new photo for the employee (JPG, PNG, GIF)</small>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Image URL (or leave empty for upload)</label>
+        @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control", placeholder = "Or enter direct image URL" })
         @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
     </div>
 

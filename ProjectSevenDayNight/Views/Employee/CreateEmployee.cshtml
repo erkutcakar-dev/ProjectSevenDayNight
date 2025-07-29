@@ -10,7 +10,7 @@
 
 <h3>Add Employee</h3>
 
-<form asp-action="CreateEmployee" method="post">
+<form asp-action="CreateEmployee" method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="Title" class="form-label">Title</label>
         <input asp-for="Title" class="form-control" />
@@ -21,11 +21,20 @@
         <input asp-for="Subtitle" class="form-control" />
         <span asp-validation-for="Subtitle" class="text-danger"></span>
     </div>
+    
+    <!-- Fotoğraf Yükleme Bölümü -->
     <div class="mb-3">
-        <label for="ImageUrl" class="form-label">Image URL</label>
-        <input asp-for="ImageUrl" class="form-control" />
+        <label for="employeeImage" class="form-label">Employee Photo</label>
+        <input type="file" id="employeeImage" name="employeeImage" class="form-control" accept="image/*" />
+        <small class="form-text text-muted">Upload a photo for the employee (JPG, PNG, GIF)</small>
+    </div>
+    
+    <div class="mb-3">
+        <label for="ImageUrl" class="form-label">Image URL (or leave empty for upload)</label>
+        <input asp-for="ImageUrl" class="form-control" placeholder="Or enter direct image URL" />
         <span asp-validation-for="ImageUrl" class="text-danger"></span>
     </div>
+    
     <div class="mb-3">
         <label for="NameSurname" class="form-label">Name Surname</label>
         <input asp-for="NameSurname" class="form-control" />

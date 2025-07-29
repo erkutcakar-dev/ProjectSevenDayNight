@@ -107,8 +107,8 @@ namespace ProjectSevenDayNight.Controllers
 
         public PartialViewResult _CompanyStats()
         {
-           var companyStats = DayNightDbEntities.CompanyStats.ToList();
-            return PartialView(companyStats);
+            // Artık view statik veriler kullanıyor, bu yüzden boş model döndürüyoruz
+            return PartialView();
         }
 
 

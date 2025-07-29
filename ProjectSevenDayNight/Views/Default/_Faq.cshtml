@@ -10,9 +10,9 @@
 
         <div class="row g-5">
             @{
-                // Soruları ikiye böl
-                var firstHalf = Model.Take(10).ToList();
-                var secondHalf = Model.Skip(10).Take(10).ToList();
+                // Soruları 6'şar 6'şar böl
+                var firstHalf = Model.Take(6).ToList();
+                var secondHalf = Model.Skip(6).Take(6).ToList();
 
                 int index = 0;
             }

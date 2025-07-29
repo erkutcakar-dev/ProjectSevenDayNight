@@ -5,7 +5,7 @@
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
             <h4 class="text-primary">@SimpleResourceHelper.GetString("FeaturesTitle")</h4>
-            <h1 class="display-4 mb-4">@SimpleResourceHelper.GetString("FeaturesSubtitle")</h1>
+            <h1 class="display-4 mb-4">@SimpleResourceHelper.GetString("FeaturesSubtitle").Replace(" ", " &nbsp; ")</h1>
             <p class="mb-0">
                 @SimpleResourceHelper.GetString("FeaturesDescription")
             </p>
@@ -16,8 +16,8 @@
             {
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="feature-item p-4 pt-0 bg-white shadow rounded-4 h-100">
-                        <div class="feature-icon p-4 mb-4 text-primary bg-light rounded-circle">
-                            <i class="@item.ImageUrl"></i>
+                        <div class="feature-icon p-4 mb-4 text-primary bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; margin: 0 auto;">
+                            <i class="@item.ImageUrl" style="font-size: 2rem;"></i>
                         </div>
                         <h4 class="mb-3">@item.T("Title")</h4>
                         <p class="mb-4">@item.T("Subtitle")</p>
