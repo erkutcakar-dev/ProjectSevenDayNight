@@ -31,8 +31,19 @@ namespace ProjectSevenDayNight.Controllers
         public ActionResult DeleteCompanyStats(int id)
         {
             var companyStats = db.CompanyStats.Find(id);
-            db.CompanyStats.Remove(companyStats);
-            db.SaveChanges();
+            if (companyStats != null)
+            {
+                // Önce CompanyStatsTranslations kayıtlarını sil
+                var translations = db.CompanyStatsTranslations.Where(t => t.StatId == id).ToList();
+                foreach (var translation in translations)
+                {
+                    db.CompanyStatsTranslations.Remove(translation);
+                }
+                
+                // Sonra CompanyStats'ı sil
+                db.CompanyStats.Remove(companyStats);
+                db.SaveChanges();
+            }
             return RedirectToAction("CompanyStatsList");
         }
         

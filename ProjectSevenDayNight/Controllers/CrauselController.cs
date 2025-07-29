@@ -31,8 +31,19 @@ namespace ProjectSevenDayNight.Controllers
         public ActionResult DeleteCrausel(int id)
         {
             var crausel = db.Crausel.Find(id);
-            db.Crausel.Remove(crausel);
-            db.SaveChanges();
+            if (crausel != null)
+            {
+                // Önce CrauselTranslations kayıtlarını sil
+                var translations = db.CrauselTranslations.Where(t => t.CrauselId == id).ToList();
+                foreach (var translation in translations)
+                {
+                    db.CrauselTranslations.Remove(translation);
+                }
+                
+                // Sonra Crausel'ı sil
+                db.Crausel.Remove(crausel);
+                db.SaveChanges();
+            }
             return RedirectToAction("CrauselList");
         }
         

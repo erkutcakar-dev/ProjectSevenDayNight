@@ -12,49 +12,49 @@
     @Html.HiddenFor(m => m.AboutId)
 
     <div class="mb-3">
-        <label class="form-label">Alt Başlık</label>
+        <label class="form-label">Subtitle</label>
         @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Subtitle, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Başlık</label>
+        <label class="form-label">Title</label>
         @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Açıklama</label>
+        <label class="form-label">Description</label>
         @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "5" })
         @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Madde 1</label>
+        <label class="form-label">Bullet Point 1</label>
         @Html.TextBoxFor(m => m.BulletPoint1, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.BulletPoint1, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Madde 2</label>
+        <label class="form-label">Bullet Point 2</label>
         @Html.TextBoxFor(m => m.BulletPoint2, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.BulletPoint2, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Madde 3</label>
+        <label class="form-label">Bullet Point 3</label>
         @Html.TextBoxFor(m => m.BulletPoint3, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.BulletPoint3, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Buton Metni</label>
+        <label class="form-label">Button Text</label>
         @Html.TextBoxFor(m => m.ButtonText, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.ButtonText, "", new { @class = "text-danger" })
     </div>
 
-    <button type="submit" class="btn btn-primary">Güncelle</button>
-    <a href="/About/AboutList" class="btn btn-secondary ms-2">İptal</a>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="/About/AboutList" class="btn btn-secondary ms-2">Cancel</a>
 }
 
 @section Scripts {

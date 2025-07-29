@@ -38,8 +38,19 @@ namespace ProjectSevenDayNight.Controllers
         public ActionResult DeleteContact(int id)
         {
             var contact = db.Contact.Find(id);
-            db.Contact.Remove(contact);
-            db.SaveChanges();
+            if (contact != null)
+            {
+                // Önce ContactTranslations kayıtlarını sil
+                var translations = db.ContactTranslations.Where(t => t.ContactId == id).ToList();
+                foreach (var translation in translations)
+                {
+                    db.ContactTranslations.Remove(translation);
+                }
+                
+                // Sonra Contact'ı sil
+                db.Contact.Remove(contact);
+                db.SaveChanges();
+            }
             return RedirectToAction("ContactList");
         }
         

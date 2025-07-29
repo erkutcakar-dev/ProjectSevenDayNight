@@ -36,8 +36,19 @@ namespace ProjectSevenDayNight.Controllers
         public ActionResult DeleteFeature(int id)
         {
             var feature = db.Feature.Find(id);
-            db.Feature.Remove(feature);
-            db.SaveChanges();
+            if (feature != null)
+            {
+                // Önce FeatureTranslations kayıtlarını sil
+                var translations = db.FeatureTranslations.Where(t => t.FeatureId == id).ToList();
+                foreach (var translation in translations)
+                {
+                    db.FeatureTranslations.Remove(translation);
+                }
+                
+                // Sonra Feature'ı sil
+                db.Feature.Remove(feature);
+                db.SaveChanges();
+            }
             return RedirectToAction("FeatureList");
         }
         

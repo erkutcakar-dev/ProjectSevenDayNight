@@ -134,8 +134,19 @@ namespace ProjectSevenDayNight.Controllers
         public ActionResult DeleteService(int id)
         {
             var service = db.Service.Find(id);
-            db.Service.Remove(service);
-            db.SaveChanges();
+            if (service != null)
+            {
+                // Önce ServiceTranslations kayıtlarını sil
+                var translations = db.ServiceTranslations.Where(t => t.ServiceId == id).ToList();
+                foreach (var translation in translations)
+                {
+                    db.ServiceTranslations.Remove(translation);
+                }
+                
+                // Sonra Service'i sil
+                db.Service.Remove(service);
+                db.SaveChanges();
+            }
             return RedirectToAction("ServiceList");
         }
         

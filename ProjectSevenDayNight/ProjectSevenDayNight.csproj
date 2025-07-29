@@ -257,6 +257,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\black-fotor-bg-remover-2025072912856.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -273,6 +274,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\erkut logo.png" />
     <Content Include="Content\kaiadmin-lite-1.2.0\assets\css\bootstrap.min.css" />
     <Content Include="Content\kaiadmin-lite-1.2.0\assets\css\demo.css" />
     <Content Include="Content\kaiadmin-lite-1.2.0\assets\css\fonts.css" />

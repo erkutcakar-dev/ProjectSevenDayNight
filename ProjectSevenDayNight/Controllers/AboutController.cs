@@ -44,8 +44,19 @@ namespace ProjectSevenDayNight.Controllers
         public ActionResult DeleteAbout(int id)
         {
             var about = db.About.Find(id);
-            db.About.Remove(about);
-            db.SaveChanges();
+            if (about != null)
+            {
+                // Önce AboutTranslations kayıtlarını sil
+                var translations = db.AboutTranslations.Where(t => t.AboutId == id).ToList();
+                foreach (var translation in translations)
+                {
+                    db.AboutTranslations.Remove(translation);
+                }
+                
+                // Sonra About'u sil
+                db.About.Remove(about);
+                db.SaveChanges();
+            }
             return RedirectToAction("AboutList");
         }
         [HttpGet]

@@ -12,37 +12,37 @@
     @Html.HiddenFor(m => m.EmployeeId)
 
     <div class="mb-3">
-        <label class="form-label">Başlık</label>
+        <label class="form-label">Title</label>
         @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Alt Başlık</label>
+        <label class="form-label">Subtitle</label>
         @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Subtitle, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Resim URL</label>
+        <label class="form-label">Image URL</label>
         @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Ad Soyad</label>
+        <label class="form-label">Name Surname</label>
         @Html.TextBoxFor(m => m.NameSurname, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.NameSurname, "", new { @class = "text-danger" })
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Meslek</label>
+        <label class="form-label">Job</label>
         @Html.TextBoxFor(m => m.Job, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Job, "", new { @class = "text-danger" })
     </div>
 
-    <button type="submit" class="btn btn-primary">Güncelle</button>
-    <a href="/Employee/EmployeeList" class="btn btn-secondary ms-2">İptal</a>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="/Employee/EmployeeList" class="btn btn-secondary ms-2">Cancel</a>
 }
 
 @section Scripts {

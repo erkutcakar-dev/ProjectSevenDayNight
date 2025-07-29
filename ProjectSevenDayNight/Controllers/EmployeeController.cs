@@ -38,8 +38,19 @@ namespace ProjectSevenDayNight.Controllers
         public ActionResult DeleteEmployee(int id)
         {
             var employee = db.Employee.Find(id);
-            db.Employee.Remove(employee);
-            db.SaveChanges();
+            if (employee != null)
+            {
+                // Önce EmployeeTranslations kayıtlarını sil
+                var translations = db.EmployeeTranslations.Where(t => t.EmployeeId == id).ToList();
+                foreach (var translation in translations)
+                {
+                    db.EmployeeTranslations.Remove(translation);
+                }
+                
+                // Sonra Employee'yi sil
+                db.Employee.Remove(employee);
+                db.SaveChanges();
+            }
             return RedirectToAction("EmployeeList");
         }
         
