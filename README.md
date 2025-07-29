@@ -249,3 +249,28 @@ string apiKey = "YOUR-HUGGINGFACE-API-KEY";
 ---
 
 ⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın! 
+
+<img width="1920" height="910" alt="18" src="https://github.com/user-attachments/assets/929e6f58-6360-453c-8266-7ce5284a57c7" />
+<img width="1920" height="912" alt="17" src="https://github.com/user-attachments/assets/0ef4a880-d9f1-4f40-9bfe-5eb7482bd038" />
+<img width="1920" height="910" alt="16" src="https://github.com/user-attachments/assets/7d4d8b5e-9afa-43eb-acf5-7675953e5c97" />
+<img width="1920" height="912" alt="15" src="https://github.com/user-attachments/assets/74d03af0-cc62-4a48-9e3d-1d37b320356e" />
+<img width="1920" height="1032" alt="14" src="https://github.com/user-attachments/assets/9f5dd058-4512-4aa0-ad6e-0556f5e2c9ba" />
+<img width="1920" height="1032" alt="13" src="https://github.com/user-attachments/assets/b9896f47-14a0-4d41-ad68-7a0f5286c2cb" />
+<img width="1920" height="912" alt="12" src="https://github.com/user-attachments/assets/cc07095e-a681-42a3-95dc-b887345cb96f" />
+<img width="1920" height="1032" alt="11" src="https://github.com/user-attachments/assets/e8339a0d-0513-4c26-a26f-9575e50fd763" />
+<img width="1310" height="569" alt="10" src="https://github.com/user-attachments/assets/cd3d16ed-d1df-4d73-9c8f-f241e91057b9" />
+<img width="1920" height="915" alt="9" src="https://github.com/user-attachments/assets/6ef1e814-cbc0-4c1e-98af-16f1b3f712c4" />
+<img width="1920" height="909" alt="8" src="https://github.com/user-attachments/assets/9c37ef4b-bf4e-44aa-b87d-35e483a0ecbe" />
+<img width="1920" height="712" alt="7" src="https://github.com/user-attachments/assets/ff1fef89-7a73-4d91-abf1-d528272d82cb" />
+<img width="1920" height="910" alt="6" src="https://github.com/user-attachments/assets/d4c53989-7c34-4fe8-8e7b-06c3501c93e7" />
+<img width="1920" height="602" alt="5" src="https://github.com/user-attachments/assets/4259867d-65db-46d2-9fdd-3f9613d806a0" />
+<img width="1080" height="1748" alt="4" src="https://github.com/user-attachments/assets/e0a39259-3cae-4072-9a3f-2717c23a3430" />
+<img width="1080" height="1745" alt="3" src="https://github.com/user-attachments/assets/47962990-cd71-47fd-97b1-3f42d116f8a7" />
+<img width="1080" height="1756" alt="2 " src="https://github.com/user-attachments/assets/5d4b672f-d693-48f4-a4e2-2f0a7c788677" />
+<img width="1080" height="1743" alt="1" src="https://github.com/user-attachments/assets/97a8f640-f9e4-4703-ac25-8e1cd5d3ee68" />
+
+
+
+
+
+
