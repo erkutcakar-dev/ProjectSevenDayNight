@@ -5,7 +5,7 @@ Modern ve dinamik bir web uygulaması - ASP.NET MVC ile geliştirilmiş çok dil
 ## 🚀 Özellikler
 
 ### ✨ Ana Özellikler
-- **🌍 Çok Dilli Destek:** Türkçe, İngilizce ve Almanca dil desteği
+- **🌍 Çok Dilli Destek:** İngilizce ve Almanca dil desteği
 - **🤖 AI Entegrasyonu:** ChatGPT API ile otomatik FAQ oluşturma
 - **🎨 AI Görsel Üretimi:** HuggingFace API ile dinamik görsel oluşturma
 - **📱 Responsive Tasarım:** Bootstrap ile mobil uyumlu arayüz
@@ -62,7 +62,7 @@ ProjectSevenDayNight/
 ### Adımlar
 1. **Repository'yi klonlayın:**
    ```bash
-   git clone https://github.com/[username]/ProjectSevenDayNight.git
+   git clone https://github.com/[erkutcakar-dev]/ProjectSevenDayNight.git
    ```
 
 2. **Veritabanını oluşturun:**
@@ -140,13 +140,12 @@ string apiKey = "YOUR-HUGGINGFACE-API-KEY";
 
 ## 🌍 Çok Dilli Destek
 
-### Desteklenen Diller
-- 🇹🇷 **Türkçe** (Varsayılan)
+### Desteklenen Diller-
 - 🇬🇧 **İngilizce**
 - 🇩🇪 **Almanca**
 
 ### Çeviri Sistemi
-- **Otomatik Çeviri:** Google Translate API entegrasyonu
+- **Otomatik Çeviri:** Google Translate API entegrasyonu (İngilizce - Almanca) 
 - **Manuel Çeviri:** Admin panelinden düzenleme
 - **Dinamik Dil Değiştirme:** URL tabanlı dil değiştirme
 
@@ -192,13 +191,6 @@ string apiKey = "YOUR-HUGGINGFACE-API-KEY";
 4. **Branch'inizi push edin** (`git push origin feature/AmazingFeature`)
 5. **Pull Request oluşturun**
 
-## 📝 Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakın.
-
-## 👨‍💻 Geliştirici
-
-**Erkut** - [GitHub Profili](https://github.com/[username])
 
 ## 🙏 Teşekkürler
 
@@ -210,9 +202,9 @@ Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosy
 
 ## 📞 İletişim
 
-- **Email:** [email@example.com]
-- **GitHub:** [https://github.com/[username]]
-- **LinkedIn:** [https://linkedin.com/in/[username]]
+- **Email:** [erkutcakar@gmail.com]
+- **GitHub:** [https://github.com/[erkutcakar-dev]]
+- **LinkedIn:** [https://linkedin.com/in/[erkut-cakar]]
 
 ---
 
