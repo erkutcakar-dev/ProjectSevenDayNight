@@ -29,10 +29,50 @@ ProjectSevenDayNight/
 ├── Models/              # Data Models & ViewModels
 ├── Views/               # Razor Views
 ├── Content/             # Static Files (CSS, JS, Images)
+│   ├── LifeSure-1.0.0/ # Main Theme Assets
+│   │   └── img/        # Theme Images
+│   ├── AiImages/        # AI Generated Images
+│   └── EmployeeImages/  # Employee Photos
 ├── Scripts/             # JavaScript Files
 ├── Helpers/             # Utility Classes
 └── App_GlobalResources/ # Localization Files
 ```
+
+## 🖼️ Proje Görselleri
+
+### 📸 LifeSure Theme Images (1-24)
+1. **about-1.png** - Hakkımızda bölümü görseli
+2. **bg-breadcrumb.jpg** - Breadcrumb arka plan görseli
+3. **blog-1.png** - Blog görseli 1
+4. **blog-2.png** - Blog görseli 2
+5. **blog-3.png** - Blog görseli 3
+6. **blog-4.png** - Blog görseli 4
+7. **carousel-2.png** - Ana sayfa carousel görseli
+8. **contact-img.png** - İletişim bölümü görseli
+9. **instagram-footer-1.jpg** - Instagram footer görseli 1
+10. **instagram-footer-2.jpg** - Instagram footer görseli 2
+11. **instagram-footer-3.jpg** - Instagram footer görseli 3
+12. **instagram-footer-4.jpg** - Instagram footer görseli 4
+13. **instagram-footer-5.jpg** - Instagram footer görseli 5
+14. **instagram-footer-6.jpg** - Instagram footer görseli 6
+15. **team-1.jpg** - Ekip üyesi fotoğrafı 1
+16. **team-2.jpg** - Ekip üyesi fotoğrafı 2
+17. **team-3.jpg** - Ekip üyesi fotoğrafı 3
+18. **team-4.jpg** - Ekip üyesi fotoğrafı 4
+19. **testimonial-1.jpg** - Müşteri yorumu görseli 1
+20. **testimonial-2.jpg** - Müşteri yorumu görseli 2
+21. **testimonial-3.jpg** - Müşteri yorumu görseli 3
+22. **erkut logo.png** - Proje logosu
+23. **black-fotor-bg-remover-2025072912856.png** - Logo (BG removed)
+24. **Thumbs.db** - Windows thumbnail cache
+
+### 🤖 AI Generated Images (1-6)
+1. **66212aca-1b0c-4caa-81db-9cd026bcf28b.png** - AI üretilen görsel 1
+2. **79b0b1a2-a0d9-4b61-8bad-f3a5700f8b58.png** - AI üretilen görsel 2
+3. **ba055c5b-a9bd-4447-9afc-37dd05162d18.png** - AI üretilen görsel 3
+4. **dc8ec8e4-5c28-4527-b52e-ba15939c8c3f.png** - AI üretilen görsel 4
+5. **e0b8a664-ebfa-44eb-9b67-7948c1d9163a.png** - AI üretilen görsel 5
+6. **0bbeac5a-cf0a-4278-844c-5a414d08bdc3.png** - AI üretilen görsel 6
 
 ## 🎯 Bölümler
 
